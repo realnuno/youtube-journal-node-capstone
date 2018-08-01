@@ -1,0 +1,39 @@
+{
+    "name": "youtube-journal-node-capstone",
+    "version": "1.0.0",
+    "description": "You can store youtube url with comment.",
+    "main": "server.js",
+    "dependencies": {
+        "bcrypt": "^0.8.7",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.15.2",
+        "cors": "^2.8.4",
+        "express": "^4.14.0",
+        "moment": "^2.18.1",
+        "mongodb": "^2.2.9",
+        "mongoose": "^4.5.10",
+        "passport": "^0.3.2",
+        "passport-http": "^0.3.0",
+        "unirest": "^0.5.1"
+    },
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "chai-http": "^3.0.0",
+        "faker": "^3.1.0",
+        "mocha": "^3.2.0"
+    },
+    "scripts": {
+        "test": "mocha",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/realnuno/youtube-journal-node-capstone.git"
+    },
+    "author": "Ian Hwang",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/realnuno/youtube-journal-node-capstone/issues"
+    },
+    "homepage": "https://github.com/realnuno/youtube-journal-node-capstone#readme"
+}
