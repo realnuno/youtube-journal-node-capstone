@@ -1,0 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*:focus {outline: none;}
+
+html,
+body {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+.clearfix {zoom: 1;}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+
+.nav-bar {
+    background-color: #ffffff;
+    position: fixed;
+    width: 100%;
+    padding: 13px 60px;
+    box-shadow: 0px 5px 5px 0px rgba(158,158,158,1);
+}
+
+.main-search,
+.main-nav,
+.main-nav li {
+    display: inline-block;
+}
+
+.main-nav {
+    float: right;
+    list-style: none;
+}
+
+
+.nav-bar a:link,
+.nav-bar a:visited {
+    color: #cc181e;
+    text-decoration: none;
+}
+
+.main-nav li {
+    margin-right: 15px;
+}
+
+
+.main-page,
+.login-page,
+.signup-page,
+.mylist-main{
+    padding-top: 200px;
+    width: 100%;
+    background-color: #f8f8f8;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+}
+
+
+
+
+.main-page h1,
+.main-page form {
+    text-align: center;
+}
+
+.main-page h1 {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.search-input,
+.search-form button,
+{
+    margin-top: 30px;
+    font-size: 15px;
+}
+
+.search-input,
+.email-input,
+.password-input{
+    width:40%;
+    height: 35px;
+    padding-left: 15px;
+    border-radius: 5px;
+}
+
+
+.search-form button {
+    height: 35px;
+    padding: 0 15px;
+    border-radius: 5px;
+/*    background-color:#e52128;*/
+}
+
+
+.about-this-app {
+    margin-top: 60px;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+
+.about-this-app i {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.fa-youtube-square {
+    color:#cc181e;
+}
+
+footer {
+    background-color: #585858;
+    height: 160px;
+    color: #ebebeb;
+    padding-top: 50px;
+    text-align: center;
+}
+
+
+
+
+
+
+.youtube-search-result {
+    margin-top: 40px;
+}
+
+.youtube-search-result h2 {
+
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#search-results li {
+    text-align: center;
+    list-style: none;
+    border: 1px #c7c7c7 solid;
+    padding-top: 30px;
+    margin: 50px 20% 0 20%;
+    border-radius: 5px;
+    box-shadow: 4px 4px 5px 0px rgba(128,128,128,1);
+}
+
+#search-results ul {
+    text-align: center;
+}
+
+#search-results img {
+    width: 90%;
+    border-radius: 7px;
+    margin-bottom: 15px;
+    box-shadow: 4px 4px 5px 0px rgba(128,128,128,1);
+}
+
+
+.add-video {
+   font-size: 20px;
+    height: 30px;
+    width: 70%;
+    margin:15px 0 25px 0;
+}
+
+
+
+
+
+
+
+
+.email-input,
+.password-input,
+.login-button{
+    display: block;
+    width: 40%;
+    min-width: 500px;
+    margin: 10px auto;
+}
+
+
+
+.login-button {
+    margin-top: 30px;
+    font-size: 15px;
+    height: 35px;
+    padding: 0 15px;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*---------My List----------------*/
+
+.mylist-main {
+    padding-top: 200px;
+    width: 100%;
+    background-color: #f8f8f8;
+    text-align: center;
+    width: 100%;
+}
+
+.mylist-main h1 {
+    margin-bottom: 50px;
+}
+
+.mylist-results {
+    height: auto;
+    padding: 30px 0;
+}
+
+
+.mylist-video,
+.mylist-joutnal,
+.mylist-buttons {
+    height: 200px;
+}
+
+.mylist-video {
+    border:1px black solid;
+}
+
+.mylist-joutnal {
+    border-top:1px black solid;
+    border-bottom:1px black solid;
+}
+
+.mylist-buttons {
+    border:1px black solid;
+    padding-top: 70px;
+
+}
+
+.mylist-buttons button {
+    height: 40px;
+    width: 70px;
+}
+
+.mylist-results li {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.journal-textera {
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+/*--------------Edit -----------------*/
+
+
+
+.edit-video,
+.edit-joutnal,
+.edit-buttons {
+    height: 200px;
+}
+
+.edit-video {
+    border:1px black solid;
+}
+
+.edit-joutnal {
+    padding: 16px;
+    border-top:1px black solid;
+    border-bottom:1px black solid;
+}
+
+.edit-buttons {
+    border:1px black solid;
+    padding-top: 70px;
+
+}
+
+.edit-buttons button {
+    height: 40px;
+    width: 70px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

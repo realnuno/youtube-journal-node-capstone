@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../css/grid.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <title>YouTube-Journal</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-bar">
+                <a href="#features" class="main-search">Video Search</a>
+                <ul class="main-nav">
+                    <li><a href="signup.html">Sign UP</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+       <div class="main-page">
+           <div class="row">
+               <h1>YouTube - Journal</h1>
+               <form class="search-form">
+                   <input type="text" class="search-input" id="search-input" name="search-input" placeholder="Search video">
+                   <button type="submit">Search</button>
+               </form>
+           </div>
+       </div>
+
+       <div class="row youtube-search-result" hidden>
+
+           <h2>Results</h2>
+           <div id="search-results" aria-live="assertive">
+               <ul>
+
+               </ul>
+           </div>
+
+           <div class="buttonOptions col-12">
+               <input type="button" class="tokenClass" value="Previous">
+               <input type="button" class="tokenClass" value="Next">
+           </div>
+       </div>
+
+
+
+
+       <div class="row about-this-app">
+           <div class="col-4 youtube-about">
+               <i class="fab fa-youtube-square"></i>
+               <p>You can search Your video.</p>
+           </div>
+           <div class="col-4 save-video-about">
+               <i class="fas fa-download"></i>
+               <p>You can save your own video list.</p>
+           </div>
+           <div class="col-4 journal-about">
+               <i class="fas fa-pencil-alt"></i>
+               <p>You can write your own journal.</p>
+           </div>
+       </div>
+    </header>
+
+    <footer>
+        <div class="row">
+            <p>Footer</p>
+        </div>
+    </footer>
+    <script src="../js/youtube-finder.js"></script>
+</body>
+</html>
