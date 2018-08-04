@@ -20,11 +20,10 @@ This app is for three types of users:
 2. SEEN - For Theatre-Goers (enthusiasts, specialists, etc.), so that they can track all the shows the have seen, where and when they have seen them, and any specific Notes they would like to add.
 3. PERFORMED - For Theatrical Artists and Perfomers, so that they can record all shows they have performed in by Role, Location, Date and include Notes (and Lines).
 
-### UI Flow
-![UI Flow handwritten draft](https://github.com/KatiLong/node-capstone/blob/master/github-images/node-capstone-user-flow.jpg)
 
-### Wireframe _main
-![Wireframe _Main](https://github.com/KatiLong/node-capstone/blob/master/github-images/wireframe-v1.jpg)
+### Wireframes
+![Main Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/main-page.jpg)
+![Mylist Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/mylist-page.jpg)
 
 ## Working Prototype
 You can access a working prototype of the app here: https://youtube-journal.herokuapp.com/
