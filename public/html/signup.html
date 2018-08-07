@@ -3,10 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script
-                src="https://code.jquery.com/jquery-3.2.1.min.js"
-                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-                crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="../css/grid.css">
         <link rel="stylesheet" type="text/css" href="../css/main.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet">
@@ -17,9 +13,9 @@
         <header>
             <nav>
                 <div class="nav-bar">
-                    <a href="index.html" class="main-search">Video Search</a>
+                    <a href="#features" class="main-search">Video Search</a>
                     <ul class="main-nav">
-                        <li><a href="login.html">Login</a></li>
+                        <li><a href="#signup">Login</a></li>
                     </ul>
                 </div>
             </nav>
@@ -31,9 +27,11 @@
                     <div class="col-12">
                         <h1>Sign Up</h1>
                         <form class="signup-form">
+                            <input type="text" class="name-input" id="name-input" name="name-input" placeholder="name">
                             <input type="text" class="email-input" id="email-input" name="email-input" placeholder="email">
                             <input type="text" class="password-input" id="password-input" name="password-input" placeholder="password">
-                            <button class="login-button" type="submit">Sign up</button>
+
+                            <button class="signup-button" type="submit">Sign up</button>
                         </form>
                     </div>
                 </div>
@@ -46,6 +44,7 @@
                 <p>Footer</p>
             </div>
         </footer>
-        <script src="../js/youtube-finder.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="../js/signup.js"></script>
     </body>
 </html>

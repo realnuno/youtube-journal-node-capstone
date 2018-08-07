@@ -97,9 +97,7 @@ body {
     font-size: 15px;
 }
 
-.search-input,
-.email-input,
-.password-input{
+.search-input {
     width:40%;
     height: 35px;
     padding-left: 15px;
@@ -192,16 +190,23 @@ footer {
 
 .email-input,
 .password-input,
-.login-button{
+.login-button,
+.signup-button,
+.name-input {
     display: block;
     width: 40%;
     min-width: 500px;
     margin: 10px auto;
+    height: 35px;
+    padding-left: 15px;
+    border-radius: 5px;
 }
 
 
 
-.login-button {
+.login-button,
+.signup-button
+{
     margin-top: 30px;
     font-size: 15px;
     height: 35px;
