@@ -177,7 +177,7 @@ footer {
 .add-video {
    font-size: 20px;
     height: 30px;
-    width: 70%;
+    width: 100%;
     margin:15px 0 25px 0;
 }
 
@@ -213,9 +213,6 @@ footer {
     padding: 0 15px;
     border-radius: 5px;
 }
-
-
-
 
 
 
@@ -286,33 +283,35 @@ footer {
 
 
 
-/*--------------Edit -----------------*/
+/*--------------Add -----------------*/
 
 
-
-.edit-video,
-.edit-joutnal,
-.edit-buttons {
+.add-main {
+    padding-top: 150px;
+    margin-bottom: 100px;
+}
+.add-video,
+.add-joutnal{
     height: 200px;
 }
 
-.edit-video {
+.add-video {
     border:1px black solid;
 }
 
-.edit-joutnal {
+.add-joutnal {
     padding: 16px;
     border-top:1px black solid;
     border-bottom:1px black solid;
 }
 
-.edit-buttons {
+.add-button {
     border:1px black solid;
     padding-top: 70px;
 
 }
 
-.edit-buttons button {
+.add-button button {
     height: 40px;
     width: 70px;
 }

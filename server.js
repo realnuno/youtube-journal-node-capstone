@@ -2,6 +2,12 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const unirest = require('unirest');
+const events = require('events');
+const {google} = require('googleapis');
+const bodyParser = require('body-parser');
+const config = require('./config');
+const https = require('https');
 const morgan = require("morgan");
 const passport = require("passport");
 const { router: usersRouter } = require("./users");
@@ -33,12 +39,61 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 
+
 app.use("/api/users/", usersRouter);
 app.use("/api/auth/", authRouter);
 
+
+
+
+
+
+//----------------------  YouTube endpoint----------------//
+
+
+const youtube = google.youtube({
+    version: 'v3',
+    auth: "AIzaSyDxkmLJ32YwnuN4b7vuHfxpGrbZ99edrbE"
+});
+
+
+
+
+app.get('/api/search', function (req, res) {
+
+
+//    console.log(req.params);
+    const input = req.query.q;
+    const page = req.query.pageToken;
+
+    youtube.search.list({
+        maxResults: 5,
+        part: 'snippet',
+        pageToken : page,
+        q: input
+    }, function (err, data) {
+        if (err) {
+            console.error('Error: ' + err);
+        }
+        if (data) {
+//            console.log(data.data.items)
+            res.json(data.data)
+        }
+    });
+});
+
+
+
+
+
+
+
+
 const jwtAuth = passport.authenticate("jwt", { session: false });
 
-app.get("/api/protected", jwtAuth, (req, res) => {
+
+
+app.get("/api/logout", jwtAuth, (req, res) => {
     return res.json({
         data: "rosebud"
     });

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/grid.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <title>YouTube-Journal</title>
+</head>
+<body>
+
+
+
+    <section class="main-section">
+        <nav>
+            <div class="unlogged nav-bar">
+                <div id="nav-video-search-button0">Video Search</div>
+                <ul class="main-nav">
+                    <li><div id="nav-signup-button" >Sign UP</div></li>
+                    <li><div id="nav-login-button">Log In</div></li>
+                </ul>
+             </div>
+            <div class="logged nav-bar" hidden>
+                <div id="nav-video-search-button1">Video Search</div>
+                 <ul class="main-nav" >
+                    <li><div id="nav-mylist-button1">mylist</div></li>
+                     <li><div id="nav-edit-button">edit</div></li>
+                     <li><div id="nav-logout-button1">Logout</div></li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+       <div class="main-page">
+           <div class="row">
+               <h1>YouTube - Journal</h1>
+               <form class="search-form">
+                   <input type="text" class="search-input" id="search-input" name="search-input" placeholder="Search video">
+                   <button type="submit">Search</button>
+               </form>
+           </div>
+       </div>
+
+       <div class="row youtube-search-result" hidden>
+
+           <h2>Results</h2>
+           <div id="search-results" aria-live="assertive">
+               <ul>
+
+               </ul>
+           </div>
+           <div class="buttonOptions col-12">
+               <button class="tokenClass" value="Previous">Prev</button>
+               <button class="tokenClass" value="Next">Next</button>
+           </div>
+       </div>
+
+
+
+
+
+       <div id="added-video-display">
+
+       </div>
+
+
+
+
+
+
+       <div class="row about-this-app">
+           <div class="col-4 youtube-about">
+               <i class="fab fa-youtube-square"></i>
+               <p>You can search Your video.</p>
+           </div>
+           <div class="col-4 save-video-about">
+               <i class="fas fa-download"></i>
+               <p>You can save your own video list.</p>
+           </div>
+           <div class="col-4 journal-about">
+               <i class="fas fa-pencil-alt"></i>
+               <p>You can write your own journal.</p>
+           </div>
+       </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <section class="signup-section" hidden>
+        <nav>
+            <div class="nav-bar">
+                <div id="nav-video-search-button2">Video Search</div>
+                <ul class="main-nav">
+                    <li><div id="nav-login-button2">Login</div></li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+        <div class="signup-page">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Sign Up</h1>
+                    <form class="signup-form">
+                        <input type="text" id="name-input" name="name-input" placeholder="name">
+                        <input type="text" id="email-input" name="email-input" placeholder="email">
+                        <input type="text" id="password-input" name="password-input" placeholder="password">
+
+                        <button class="signup-button" type="submit">Sign up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+     </section>
+
+
+
+
+
+
+    <section class="login-section" hidden>
+        <nav>
+            <div class="nav-bar">
+                <div id="nav-video-search-button3">Video Search</div>
+                <ul class="main-nav">
+                    <li><div id="nav-signup-button2" >Sign UP</div></li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+        <div class="login-page">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Login</h1>
+                    <form id="login-form">
+                        <input type="text"  id="login-email-input" name="email-input" placeholder="email">
+                        <input type="text" id="login-password-input" name="password-input" placeholder="password">
+                        <button class="login-button" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <section class="add-section" hidden>
+        <nav>
+            <div class="nav-bar">
+                <div id="nav-video-search-button4">Video Search</div>
+                <ul class="main-nav">
+                    <li><div id="nav-mylist-button2">mylist</div></li>
+                    <li><div id="nav-edit-button2">edit</div></li>
+                    <li><div id="nav-logout-button2">Logout</div></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <main class="add-main">
+            <h1>Add List</h1>
+            <div class="mylist-results">
+                <div class="row">
+                    <div class="col-6">
+                        <div class=" add-video"></div>
+                    </div>
+                    <div class="col-6">
+                        <div class=" add-joutnal">
+                            <textarea rows="4" cols="50" class="journal-textera"></textarea>
+                        </div>
+                </div>
+                    </div>
+                <div class="col-12">
+                    <div class="col-12 add-button">
+                        <button class="save-button">save</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </main>
+
+    </section>
+
+
+
+
+
+
+
+    <section class="mylist-section" hidden>
+        <nav>
+            <div class="nav-bar">
+                <div id="nav-video-search-button5">Video Search</div>
+                <ul class="main-nav">
+                    <li><div id="nav-mylist-button3">mylist</div></li>
+                    <li><div id="nav-edit-button3">edit</div></li>
+                    <li><div id="nav-logout-button3">Logout</div></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <main class="mylist-main">
+            <h1>My List</h1>
+            <div class="mylist-results">
+                <ul>
+                    <li class="row">
+                        <div class="col-4 mylist-video">
+                            <img src="#">
+                        </div>
+                        <div class="col-4 mylist-joutnal">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, suscipit ipsam inventore saepe expedita excepturi consequuntur corporis quod reprehenderit.
+                            </p>
+                        </div>
+                        <div class="col-4 mylist-buttons">
+                            <button class="save-button">save</button>
+                            <button class="edit-button">edit</button>
+                            <button class="delete-button">delete</button>
+                        </div>
+                    </li>
+                    <li class="row">
+                        <div class="col-4 mylist-video">
+                            <img src="#">
+                        </div>
+                        <div class="col-4 mylist-joutnal">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel praesentium, autem, voluptatem, recusandae animi totam quam dicta quidem ducimus debitis eaque.</p>
+                        </div>
+                        <div class="col-4 mylist-buttons">
+                            <button class="save-button">save</button>
+                            <button class="edit-button">edit</button>
+                            <button class="delete-button">delete</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <footer>
+        <div class="row">
+            <p>Footer</p>
+        </div>
+    </footer>
+    <script src="client.js"></script>
+</body>
+</html>
