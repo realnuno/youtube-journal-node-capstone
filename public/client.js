@@ -246,7 +246,7 @@ $(function() {
                     success: function(data) {
                         console.log("logged in!");
                         localStorage.setItem("token", data.authToken);
-                        mylistPage();
+                        searchVideoPage();
                     },
                     // headers: {
                     //   'Authorization': 'Bearer ' + authToken
@@ -366,32 +366,32 @@ $(function() {
     $("#nav-video-search-button0").click(function(e){
         e.preventDefault();
 
-        searchVideoPage(e);
+        searchVideoPage();
     });
     $("#nav-video-search-button1").click(function(e){
         e.preventDefault();
 
-        searchVideoPage(e);
+        searchVideoPage();
     });
     $("#nav-video-search-button2").click(function(e){
         e.preventDefault();
 
-        searchVideoPage(e);
+        searchVideoPage();
     });
     $("#nav-video-search-button3").click(function(e){
         e.preventDefault();
 
-        searchVideoPage(e);
+        searchVideoPage();
     });
     $("#nav-video-search-button4").click(function(e){
         e.preventDefault();
 
-        searchVideoPage(e);
+        searchVideoPage();
     });
     $("#nav-video-search-button5").click(function(e){
         e.preventDefault();
 
-        searchVideoPage(e);
+        searchVideoPage();
     });
 
 
