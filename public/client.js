@@ -138,11 +138,66 @@ $(function() {
 
 //            console.log(pickedVideo);
 
-            const embeddedVideo = `<iframe class="ytplayer" type="text/html"
-                                    src="https://www.youtube.com/embed/${pickedVideo.id.videoId}"
-                                    frameborder="0" allowfullscreen>
-                                    </iframe>`
-            $(".add-video").html(embeddedVideo);
+            const embeddedVideo = `
+            <div class="row">
+                <div class="col-6">
+                    <div class="add-video">
+                        <iframe class="ytplayer" type="text/html"
+                        src="https://www.youtube.com/embed/${pickedVideo.id.videoId}"
+                        frameborder="0" allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class=" add-joutnal">
+                        <textarea rows="4" cols="50" class="journal-textera"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="col-12 add-button">
+                        <button class="save-button">save</button>
+                    </div>
+                </div>
+            </div>
+            `
+
+
+            $(".add-results").html(embeddedVideo);
+
+            //    ----------------------- Add Video ---------------------------
+
+
+            $(".save-button").click(function(event) {
+                event.preventDefault();
+
+
+                let mylist = {
+                    videoTitle: pickedVideo.snippet.title,
+                    journal: $(".journal-textera").val(),
+                    video_url: pickedVideo.id.videoId
+                };
+
+                $.ajax({
+                    url: `/api/mylist/add-video`,
+                    data: JSON.stringify(mylist),
+                    error: function(error) {
+                        console.log("error", error);
+                    },
+                    success: function(data) {
+                        mylistPage();
+                        console.log(data);
+
+                    },
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token")
+                    },
+                    type: "POST",
+                    contentType: "application/json",
+                    dataType: "json"
+                });
+            });
         }
     });
 
@@ -290,39 +345,39 @@ $(function() {
 
 
 
-//    ----------------------- Add Video ---------------------------
-
-
-    $(".save-button").click(function(event) {
-        event.preventDefault();
-
-
-        let mylist = {
-            videoTitle: pickedVideo.snippet.title,
-            journal: $(".journal-textera").val(),
-            video_url: pickedVideo.id.videoId
-        };
-
-        $.ajax({
-            url: `/api/mylist/add-video`,
-            data: JSON.stringify(mylist),
-            error: function(error) {
-                console.log("error", error);
-            },
-            success: function(data) {
-                mylistPage();
-                console.log(data);
-
-            },
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("token")
-            },
-            type: "POST",
-            contentType: "application/json",
-            dataType: "json"
-        });
-    });
-
+////    ----------------------- Add Video ---------------------------
+//
+//
+//    $(".save-button").click(function(event) {
+//        event.preventDefault();
+//
+//
+//        let mylist = {
+//            videoTitle: pickedVideo.snippet.title,
+//            journal: $(".journal-textera").val(),
+//            video_url: pickedVideo.id.videoId
+//        };
+//
+//        $.ajax({
+//            url: `/api/mylist/add-video`,
+//            data: JSON.stringify(mylist),
+//            error: function(error) {
+//                console.log("error", error);
+//            },
+//            success: function(data) {
+//                mylistPage();
+//                console.log(data);
+//
+//            },
+//            headers: {
+//                "Authorization": "Bearer " + localStorage.getItem("token")
+//            },
+//            type: "POST",
+//            contentType: "application/json",
+//            dataType: "json"
+//        });
+//    });
+//
 
 
 
@@ -598,6 +653,33 @@ $(function() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $(".mylist-results ul").on("click", ".individualResult", function(event) {
 
         event.preventDefault();
@@ -607,7 +689,100 @@ $(function() {
         let editJournal = mylistData[$(this).attr("video-index")];
         console.log(editJournal);
 
+
+        addPage();
+
+
+        const editVideo = `
+<div class="row">
+<div class="col-6">
+<div class="add-video">
+<iframe class="ytplayer" type="text/html"
+src="https://www.youtube.com/embed/${editJournal.videoId}"
+frameborder="0" allowfullscreen>
+</iframe>
+</div>
+</div>
+<div class="col-6">
+<div class=" add-joutnal">
+<textarea rows="4" cols="50" class="journal-textera"></textarea>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-12">
+<div class="col-12 add-button">
+<button class="edit-save-button">save</button>
+</div>
+</div>
+</div>
+`
+
+
+        $(".add-results").html(editVideo);
+        $(".journal-textera").val(editJournal.journal);
+
+
+        $(".edit-save-button").click(function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+
+            let editedMylist = {
+                journal: $(".journal-textera").val(),
+                id: editJournal.id
+            };
+
+//            console.log(editedMylist);
+
+            $.ajax({
+                url: `/api/mylist/edit-journal/${editJournal.id}`,
+                data: JSON.stringify(editedMylist),
+                error: function(error) {
+                    console.log("error", error);
+                },
+                success: function(data) {
+
+                    mylistPage();
+
+                },
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                type: "PUT",
+                contentType: "application/json",
+                dataType: "json"
+            });
+        });
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

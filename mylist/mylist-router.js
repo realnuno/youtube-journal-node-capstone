@@ -94,7 +94,9 @@ router.post("/add-video", jwtAuth, jsonParser, (req, res) => {
     });
 });
 
-router.put("/:id", jsonParser, (req, res) => {
+router.put("/edit-journal/:id", jwtAuth, jsonParser, (req, res) => {
+
+
     if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
         res.status(400).json({
             error: "Request path id and request body id values must match"
@@ -104,7 +106,8 @@ router.put("/:id", jsonParser, (req, res) => {
     const updated = {};
     //change to actual fields//
     const updateableFields = [
-        "journal"
+        "journal",
+        "id"
     ];
     updateableFields.forEach(field => {
         if (field in req.body) {
@@ -112,12 +115,13 @@ router.put("/:id", jsonParser, (req, res) => {
         }
     });
 
+
     Mylist.findByIdAndUpdate(
         req.params.id,
         { $set: updated },
         { new: true }
     )
-        .then(updatedMylistn => res.status(204).end())
+        .then(updatedMylist => res.json(updatedMylist))
         .catch(err => res.status(500).json({ message: "Something went wrong" }));
 });
 
