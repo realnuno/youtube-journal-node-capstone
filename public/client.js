@@ -15,7 +15,6 @@ $(function() {
 
         event.preventDefault();
         event.stopPropagation();
-        console.log("opop");
 
         $('.youtube-search-result').show();
 
@@ -65,11 +64,11 @@ $(function() {
         $.ajax(settings);
 
     };
-//--------------------------------------------------------------------------------
+
+
     let videoInfo = [];
 
 
-    //--------------------------------------------------------------------------------
     function displayYoutubeData(data){
 
         videoInfo = data.items;
@@ -97,12 +96,12 @@ $(function() {
 
         return `
 <li>
-<div class="video-result" data-index="${index}">
-<a href = "https://www.youtube.com/watch?v=${resultInput.id.videoId}" target = "_blank">
-<img src = "${resultInput.snippet.thumbnails.medium.url}" alt="${resultInput.snippet.title}"></a>
-<p>${resultInput.snippet.channelTitle}</p>
-<button type="submit" class="add-video-button">ADD</button>
-</div>
+    <div class="video-result" data-index="${index}">
+        <a href = "https://www.youtube.com/watch?v=${resultInput.id.videoId}" target = "_blank">
+        <img src = "${resultInput.snippet.thumbnails.medium.url}" alt="${resultInput.snippet.title}"></a>
+        <p>${resultInput.snippet.channelTitle}</p>
+        <button type="submit" class="add-video-button">ADD</button>
+    </div>
 </li>
 `
     };
@@ -110,9 +109,13 @@ $(function() {
 
 
 
-//============== Add video ============
 
 
+
+
+//============== Pick video ============
+
+    let pickedVideo;
 
 
     $("#search-results ul").on("click", ".video-result", function(event) {
@@ -121,10 +124,9 @@ $(function() {
         event.stopPropagation();
 
         const authToken = localStorage.getItem("token");
-        console.log(authToken);
+        localStorage.setItem('storedVideo', JSON.stringify(pickedVideo));
 
-        const pickedVideo = videoInfo[$(this).attr("data-index")];
-        localStorage.setItem('storedVideo', JSON.stringify(pickedVideo.snippet));
+        pickedVideo = videoInfo[$(this).attr("data-index")];
 
         if(!authToken){
             $(".main-section").hide();
@@ -134,16 +136,16 @@ $(function() {
 
             addPage();
 
+//            console.log(pickedVideo);
 
-            const addedVideo = JSON.parse(localStorage.getItem('storedVideo'));
-            console.log(addedVideo);
-
+            const embeddedVideo = `<iframe class="ytplayer" type="text/html"
+                                    src="https://www.youtube.com/embed/${pickedVideo.id.videoId}"
+                                    frameborder="0" allowfullscreen>
+                                    </iframe>`
+            $(".add-video").html(embeddedVideo);
         }
     });
 
-
-
-//    ====================================================================================
 
 
 
@@ -151,6 +153,7 @@ $(function() {
 
 //    ==================  Login Section===================
 
+    let loginUserName;
 
     $("#login-form").submit(function(event) {
         event.preventDefault();
@@ -160,7 +163,6 @@ $(function() {
             password: $("#login-password-input").val()
         };
 
-        console.log(logUser);
 
 
         $.ajax({
@@ -170,9 +172,12 @@ $(function() {
                 console.log("error", error);
             },
             success: function(data) {
-//                console.log(addedVideo);
+
+//                loginUserName = logUser.email;
 
                 localStorage.setItem("token", data.authToken);
+
+                console.log(data.authToken);
 
                 const addedVideo = localStorage.getItem('storedVideo');
 
@@ -187,10 +192,15 @@ $(function() {
                 if(addedVideo){
 
                     addPage();
+
+                    const embeddedVideo = `<iframe class="ytplayer" type="text/html"
+                                            src="https://www.youtube.com/embed/${pickedVideo.id.videoId}"
+                                            frameborder="0" allowfullscreen>
+                                            </iframe>`
+                    $(".add-video").html(embeddedVideo);
                     console.log(JSON.parse(addedVideo));
                 }
                 if(!addedVideo){
-                    console.log('no');
                     searchVideoPage();
                 }
 //                mylistPage();
@@ -235,7 +245,7 @@ $(function() {
             },
             success: function(data) {
 
-                console.log("signup!");
+                console.log(data);
 
                 $.ajax({
                     url: `/api/auth/login`,
@@ -244,7 +254,10 @@ $(function() {
                         console.log("error", error);
                     },
                     success: function(data) {
+
                         console.log("logged in!");
+
+                        loginUserName = loginUser.email;
                         localStorage.setItem("token", data.authToken);
                         searchVideoPage();
                     },
@@ -269,17 +282,65 @@ $(function() {
 
 
 
+
+
+
+
+    //===================== My List page control ===============
+
+
+
+//    ----------------------- Add Video ---------------------------
+
+
+    $(".save-button").click(function(event) {
+        event.preventDefault();
+
+
+        let mylist = {
+            videoTitle: pickedVideo.snippet.title,
+            journal: $(".journal-textera").val(),
+            video_url: pickedVideo.id.videoId
+        };
+
+        $.ajax({
+            url: `/api/mylist/add-video`,
+            data: JSON.stringify(mylist),
+            error: function(error) {
+                console.log("error", error);
+            },
+            success: function(data) {
+                mylistPage();
+                console.log(data);
+
+            },
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json"
+        });
+    });
+
+
+
+
+
+
+
+
 //=====================  Log Out Section ====================
 
     const logOut = function(){
 
-
+        location.reload();
 
         localStorage.setItem("token", "");
         localStorage.setItem('storedVideo', "");
 //        searchVideoPage();
-        const authToken = localStorage.getItem("token");
-        console.log(authToken);
+//        const authToken = localStorage.getItem("token");
+//        console.log(authToken);
 
         $(".main-section").show();
         $(".logged").hide();
@@ -289,6 +350,8 @@ $(function() {
         $(".login-section").hide();
         $(".add-section").hide();
         $(".mylist-section").hide();
+
+
     };
 
 
@@ -333,13 +396,12 @@ $(function() {
 
     const searchVideoPage = function(){
 
-    const addedVideo = localStorage.getItem('storedVideo');
+        const addedVideo = localStorage.getItem('storedVideo');
 
         const authToken = localStorage.getItem("token");
 
         if(authToken){
 
-            console.log(authToken);
             $(".main-section").show();
             $(".youtube-search-result").hide();
             $(".unlogged").hide();
@@ -425,7 +487,6 @@ $(function() {
 
     const loginPage = function(e){
         e.preventDefault();
-        console.log("login");
 
         $(".main-section").hide();
         $(".signup-section").hide();
@@ -443,6 +504,8 @@ $(function() {
     });
 
 //    -------------------------- Edit ---------------------
+
+
     const addedVideo = localStorage.getItem('storedVideo');
 
 
@@ -458,31 +521,10 @@ $(function() {
         };
     }
 
-    $("#nav-edit-button").click(e => {
-
-        e.preventDefault();
-        console.log("edit");
-        addPage(e);
-
-    });
-
-    $("#nav-edit-button2").click(e => {
-
-        e.preventDefault();
-        console.log("edit");
-        addPage(e);
-    });
-
-    $("#nav-edit-button3").click(e => {
-
-        e.preventDefault();
-        console.log("edit");
-        addPage(e);
-    });
 
 
-//----------------------- My List -------------------
-
+//----------------------- My List ---------------------------------------------------
+    let mylistData = [];
 
     const mylistPage = function(){
 
@@ -491,7 +533,91 @@ $(function() {
         $(".login-section").hide();
         $(".add-section").hide();
         $(".mylist-section").show();
+
+
+
+
+
+        const renderResults = function(resultInput, index){
+
+            return `
+            <li>
+                <div class="row individualResult" video-index="${index}">
+                    <div class="col-4 mylist-video">
+                        <iframe class="ytplayer" type="text/html"
+                        src="https://www.youtube.com/embed/${resultInput.video_url}"
+                        frameborder="0" allowfullscreen>
+                        </iframe>
+                        <p>${resultInput.videoTitle}</p>
+                    </div>
+                    <div class="col-4 mylist-joutnal">
+                        <p>${resultInput.creationDate}</p>
+                        <p>${resultInput.journal}</p>
+                    </div>
+                    <div class="col-4 mylist-buttons">
+                        <button class="edit-button">edit</button>
+                        <button class="delete-button">delete</button>
+                    </div>
+                </div>
+            </li>
+                    `
+        };
+
+
+
+        $.ajax({
+            url: "/api/mylist/get-user-list",
+            dataType: "json",
+            type: "GET",
+            success: function(data) {
+            console.log(data);
+
+            mylistData = data;
+
+            const displayResults = data.map((item, index) => {
+                return renderResults(item, index);
+            });
+
+                $(".mylist-results ul").html(displayResults);
+
+
+            },
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+              error: function(error) {
+              console.log(error);
+              }
+        });
     };
+
+
+
+    //-------------------------------- Edit button ------------------------------------
+
+
+
+
+    $(".mylist-results ul").on("click", ".individualResult", function(event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+
+        let editJournal = mylistData[$(this).attr("video-index")];
+        console.log(editJournal);
+
+    });
+
+
+
+
+
+
+
+
+//    ---------------------------- My list Button -----------------------------------
+
 
     $("#nav-mylist-button1").click(e => {
         e.preventDefault();
@@ -511,14 +637,6 @@ $(function() {
 
         mylistPage(e);
     });
-
-
-
-
-
-
-
-
 
 
 

@@ -10,8 +10,10 @@ const config = require('./config');
 const https = require('https');
 const morgan = require("morgan");
 const passport = require("passport");
-const { router: usersRouter } = require("./users");
-const { router: authRouter, localStrategy, jwtStrategy } = require("./auth");
+const { router: mylistRouter } = require("./mylist/mylist-router");
+const { router: usersRouter } = require("./users/users-router");
+const { localStrategy, jwtStrategy } = require("./auth/auth-strategies");
+const { router: authRouter } = require("./auth/auth-router");
 const { PORT, DATABASE_URL } = require("./config");
 
 
@@ -42,6 +44,7 @@ passport.use(jwtStrategy);
 
 app.use("/api/users/", usersRouter);
 app.use("/api/auth/", authRouter);
+app.use("/api/mylist/", mylistRouter);
 
 
 
@@ -88,16 +91,12 @@ app.get('/api/search', function (req, res) {
 
 
 
-
-const jwtAuth = passport.authenticate("jwt", { session: false });
-
-
-
-app.get("/api/logout", jwtAuth, (req, res) => {
-    return res.json({
-        data: "rosebud"
-    });
-});
+//
+//app.get("/api/logout", localAuth, (req, res) => {
+//    return res.json({
+//        data: "rosebud"
+//    });
+//});
 
 
 
