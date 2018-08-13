@@ -249,7 +249,7 @@ $(function() {
                 let addedVideo;
                 if(pickedVideo){
                      addedVideo = JSON.parse(localStorage.getItem('storedVideo'));
-                     console.log(addedVideo);
+//                     console.log(addedVideo);
                  };
 //                }
 
@@ -314,7 +314,7 @@ $(function() {
                             },
                             success: function(data) {
                                 mylistPage();
-                                console.log(data);
+//                                console.log(data);
 
                             },
                             headers: {
@@ -372,7 +372,7 @@ $(function() {
             },
             success: function(data) {
 
-                console.log(data);
+//                console.log(data);
 
                 $.ajax({
                     url: `/api/auth/login`,
@@ -382,7 +382,7 @@ $(function() {
                     },
                     success: function(data) {
 
-                        console.log("logged in!");
+//                        console.log("logged in!");
 
                         loginUserName = loginUser.email;
                         localStorage.setItem("token", data.authToken);
@@ -539,7 +539,6 @@ $(function() {
 
     const signUpPage = function(e){
             e.preventDefault();
-            console.log("up");
 
         $(".main-section").hide();
         $(".signup-section").show();

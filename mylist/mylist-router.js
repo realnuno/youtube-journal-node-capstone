@@ -11,29 +11,28 @@ const localAuth = passport.authenticate("local", { session: false });
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
 
-//router.get("/", jwtAuth, (req, res) => {
-//
-//    console.log(req);
-//
-//    Mylist.find()
-//        .populate("user")
-//        .sort({ creationDate: -1 })
-//        .then(mylists => {
-//        res.json(
-//            mylists.map(mylist => mylist.serialize())
-//        );
-//    })
-//        .catch(err => {
-//        console.error(err);
-//        res.status(500).json({ error: "something went wrong" });
-//    });
-//});
+router.get("/", jwtAuth, (req, res) => {
+
+    console.log(req);
+
+    Mylist.find()
+        .populate("user")
+        .sort({ creationDate: -1 })
+        .then(mylists => {
+        res.json(
+            mylists.map(mylist => mylist.serialize())
+        );
+    })
+        .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: "something went wrong" });
+    });
+});
 
 
 
 router.get("/get-user-list/", jwtAuth,(req, res) => {
 
-    console.log('req');
     Mylist.find({ user: req.user.id })
         .sort({ creationDate: -1 })
         .then(mylists => {
@@ -49,7 +48,7 @@ router.get("/get-user-list/", jwtAuth,(req, res) => {
 
 
 
-router.get("/:id", localAuth, (req, res) => {
+router.get("/:id", (req, res) => {
     Mylist.findById(req.params.id)
         .populate("user")
         .then(mylist => res.json(mylist.serialize()))
@@ -61,7 +60,6 @@ router.get("/:id", localAuth, (req, res) => {
 
 router.post("/add-video", jwtAuth, jsonParser, (req, res) => {
 
-    console.log(req);
     //change to actual fields//
     const requiredFields = [
         "videoTitle",
