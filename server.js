@@ -2,14 +2,11 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const unirest = require('unirest');
-const events = require('events');
 const {google} = require('googleapis');
 const bodyParser = require('body-parser');
-const config = require('./config');
-const https = require('https');
 const morgan = require("morgan");
 const passport = require("passport");
+const config = require('./config');
 const { router: mylistRouter } = require("./mylist/mylist-router");
 const { router: usersRouter } = require("./users/users-router");
 const { localStrategy, jwtStrategy } = require("./auth/auth-strategies");
@@ -88,15 +85,6 @@ app.get('/api/search', function (req, res) {
 
 
 
-
-
-
-//
-//app.get("/api/logout", localAuth, (req, res) => {
-//    return res.json({
-//        data: "rosebud"
-//    });
-//});
 
 
 
