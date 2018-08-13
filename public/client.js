@@ -236,22 +236,16 @@ $(function() {
             },
             success: function(data) {
 
-//                loginUserName = logUser.email;
 
                 localStorage.setItem("token", data.authToken);
 
                 console.log(data.authToken);
 
-//                const addedVideo = JSON.parse(localStorage.getItem('storedVideo'));
-
-//                const addedVideo = function(){
-//                    const res = localStorage.getItem('storedVideo')
                 let addedVideo;
                 if(pickedVideo){
                      addedVideo = JSON.parse(localStorage.getItem('storedVideo'));
 //                     console.log(addedVideo);
                  };
-//                }
 
 
                 if(addedVideo){
@@ -292,7 +286,7 @@ $(function() {
                     $("#ytplayer").attr("src",video);
 
 
-                    //    ----------------------- Add Video ---------------------------
+//    ----------------------- Add Video ---------------------------
 
 
                     $(".save-button").click(function(event) {
@@ -327,7 +321,7 @@ $(function() {
                     });
                 }
                 if(!addedVideo){
-//                    searchVideoPage();
+
                     mylistPage();
                 }
 //
