@@ -125,12 +125,15 @@ router.put("/edit-journal/:id", jwtAuth, jsonParser, (req, res) => {
         .catch(err => res.status(500).json({ message: "Something went wrong" }));
 });
 
-
-
-router.delete("/:id", (req, res) => {
-    Mylist.findByIdAndDelete(req.params.id)
-        .then(deletedMylist => res.status(204).end())
-        .catch(err => res.status(500).json({ message: "Something went wrong" }));
+router.delete('/:id', jwtAuth, function (req, res) {
+    Mylist.findByIdAndRemove(req.params.id).then(function (entry) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
 });
+
 
 module.exports = { router };

@@ -124,9 +124,12 @@ $(function() {
         event.stopPropagation();
 
         const authToken = localStorage.getItem("token");
-        localStorage.setItem('storedVideo', JSON.stringify(pickedVideo));
 
         pickedVideo = videoInfo[$(this).attr("data-index")];
+
+        localStorage.setItem('storedVideo', JSON.stringify(pickedVideo));
+
+
 
         if(!authToken){
             $(".main-section").hide();
@@ -234,32 +237,88 @@ $(function() {
 
                 console.log(data.authToken);
 
-                const addedVideo = localStorage.getItem('storedVideo');
+//                const addedVideo = JSON.parse(localStorage.getItem('storedVideo'));
 
 //                const addedVideo = function(){
 //                    const res = localStorage.getItem('storedVideo')
-//                    if(res){
-//                        return JSON.parse(localStorage.getItem('storedVideo'));
-//                    }
-//                    ;
+                let addedVideo;
+                if(pickedVideo){
+                     addedVideo = JSON.parse(localStorage.getItem('storedVideo'));
+                     console.log(addedVideo);
+                 };
 //                }
+
 
                 if(addedVideo){
 
                     addPage();
 
-                    const embeddedVideo = `<iframe class="ytplayer" type="text/html"
-                                            src="https://www.youtube.com/embed/${pickedVideo.id.videoId}"
-                                            frameborder="0" allowfullscreen>
-                                            </iframe>`
-                    $(".add-video").html(embeddedVideo);
-                    console.log(JSON.parse(addedVideo));
+                    const embeddedVideo = `
+                        <div class="row">
+                        <div class="col-6">
+                        <div class="add-video">
+                        <iframe class="ytplayer" type="text/html"
+                        src="https://www.youtube.com/embed/${addedVideo.id.videoId}"
+                        frameborder="0" allowfullscreen>
+                        </iframe>
+                        </div>
+                        </div>
+                        <div class="col-6">
+                        <div class=" add-joutnal">
+                        <textarea rows="4" cols="50" class="journal-textera"></textarea>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-12">
+                        <div class="col-12 add-button">
+                        <button class="save-button">save</button>
+                        </div>
+                        </div>
+                        </div>
+                        `
+                    $(".add-results").html(embeddedVideo);
+//                    console.log(JSON.parse(addedVideo));
+
+
+                    //    ----------------------- Add Video ---------------------------
+
+
+                    $(".save-button").click(function(event) {
+                        event.preventDefault();
+
+
+                        let mylist = {
+                            videoTitle: pickedVideo.snippet.title,
+                            journal: $(".journal-textera").val(),
+                            video_url: pickedVideo.id.videoId
+                        };
+
+                        $.ajax({
+                            url: `/api/mylist/add-video`,
+                            data: JSON.stringify(mylist),
+                            error: function(error) {
+                                console.log("error", error);
+                            },
+                            success: function(data) {
+                                mylistPage();
+                                console.log(data);
+
+                            },
+                            headers: {
+                                "Authorization": "Bearer " + localStorage.getItem("token")
+                            },
+                            type: "POST",
+                            contentType: "application/json",
+                            dataType: "json"
+                        });
+                    });
                 }
                 if(!addedVideo){
-                    searchVideoPage();
+//                    searchVideoPage();
+                    mylistPage();
                 }
-//                mylistPage();
-
+//
             },
             // headers: {
             //   'Authorization': 'Bearer ' + authToken
@@ -377,7 +436,7 @@ $(function() {
 //            dataType: "json"
 //        });
 //    });
-//
+
 
 
 
@@ -597,7 +656,7 @@ $(function() {
 
             return `
             <li>
-                <div class="row individualResult" video-index="${index}">
+                <div class="row individualResult">
                     <div class="col-4 mylist-video">
                         <iframe class="ytplayer" type="text/html"
                         src="https://www.youtube.com/embed/${resultInput.video_url}"
@@ -610,8 +669,8 @@ $(function() {
                         <p>${resultInput.journal}</p>
                     </div>
                     <div class="col-4 mylist-buttons">
-                        <button class="edit-button">edit</button>
-                        <button class="delete-button">delete</button>
+                        <button class="edit-button" video-index="${index}">edit</button>
+                        <button class="delete-button" video-index="${index}">delete</button>
                     </div>
                 </div>
             </li>
@@ -650,37 +709,7 @@ $(function() {
 
     //-------------------------------- Edit button ------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    $(".mylist-results ul").on("click", ".individualResult", function(event) {
+    $(".mylist-results ul").on("click", ".edit-button", function(event) {
 
         event.preventDefault();
         event.stopPropagation();
@@ -694,33 +723,36 @@ $(function() {
 
 
         const editVideo = `
-<div class="row">
-<div class="col-6">
-<div class="add-video">
-<iframe class="ytplayer" type="text/html"
-src="https://www.youtube.com/embed/${editJournal.videoId}"
-frameborder="0" allowfullscreen>
-</iframe>
-</div>
-</div>
-<div class="col-6">
-<div class=" add-joutnal">
-<textarea rows="4" cols="50" class="journal-textera"></textarea>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-12">
-<div class="col-12 add-button">
-<button class="edit-save-button">save</button>
-</div>
-</div>
-</div>
-`
+            <div class="row">
+            <div class="col-6">
+            <div class="add-video">
+            <iframe class="ytplayer" type="text/html"
+            src="https://www.youtube.com/embed/${editJournal.video_url}"
+            frameborder="0" allowfullscreen>
+            </iframe>
+            </div>
+            </div>
+            <div class="col-6">
+            <div class=" add-joutnal">
+            <textarea rows="4" cols="50" class="journal-textera"></textarea>
+            </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-12">
+            <div class="col-12 add-button">
+            <button class="edit-save-button">save</button>
+            </div>
+            </div>
+            </div>
+            `
 
 
         $(".add-results").html(editVideo);
         $(".journal-textera").val(editJournal.journal);
+
+
+
 
 
         $(".edit-save-button").click(function(event) {
@@ -742,7 +774,7 @@ frameborder="0" allowfullscreen>
                     console.log("error", error);
                 },
                 success: function(data) {
-
+//                    console.log("good");
                     mylistPage();
 
                 },
@@ -757,10 +789,38 @@ frameborder="0" allowfullscreen>
     });
 
 
+//----------------------------------Delete Button------------------------------------------
+
+
+    $(".mylist-results ul").on("click", ".delete-button", function(event) {
+
+        event.stopPropagation();
+        event.preventDefault();
 
 
 
+        let editJournal = mylistData[$(this).attr("video-index")];
+        console.log(editJournal.id);
 
+        $.ajax({
+            url: `/api/mylist/${editJournal.id}`,
+            error: function(error) {
+                console.log("error", error);
+            },
+            success: function(data) {
+                                    console.log("good");
+                mylistPage();
+
+            },
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            type: "DELETE",
+            contentType: "application/json",
+            dataType: "json"
+        });
+
+    });
 
 
 
