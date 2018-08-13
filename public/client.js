@@ -15,6 +15,7 @@ $(function() {
 
         event.preventDefault();
         event.stopPropagation();
+        $('html').animate({ scrollTop: 630 }, 'fast');
 
         $('.youtube-search-result').show();
 
@@ -32,6 +33,8 @@ $(function() {
     let pageTokenCurrent;
 
     $(".tokenClass").click(function(event){
+
+        $('html').animate({ scrollTop: 630 }, 'fast');
 
         if($(event.currentTarget).val() == "Next"){
             pageTokenCurrent = nextPage;
@@ -120,6 +123,7 @@ $(function() {
 
     $("#search-results ul").on("click", ".video-result", function(event) {
 
+        $('html').scrollTop(0);
         event.preventDefault();
         event.stopPropagation();
 
@@ -174,7 +178,7 @@ $(function() {
 
             $(".save-button").click(function(event) {
                 event.preventDefault();
-
+                $('html').scrollTop(0);
 
                 let mylist = {
                     videoTitle: pickedVideo.snippet.title,
@@ -190,7 +194,7 @@ $(function() {
                     },
                     success: function(data) {
                         mylistPage();
-                        console.log(data);
+//                        console.log(data);
 
                     },
                     headers: {
@@ -215,6 +219,7 @@ $(function() {
 
     $("#login-form").submit(function(event) {
         event.preventDefault();
+        $('html').scrollTop(0);
 
         let logUser = {
             email: $("#login-email-input").val(),
@@ -257,7 +262,7 @@ $(function() {
                         <div class="row">
                         <div class="col-6">
                         <div class="add-video">
-                        <iframe class="ytplayer" type="text/html"
+                        <iframe id="ytplayer" type="text/html"
                         src="https://www.youtube.com/embed/${addedVideo.id.videoId}"
                         frameborder="0" allowfullscreen>
                         </iframe>
@@ -277,8 +282,14 @@ $(function() {
                         </div>
                         </div>
                         `
+
+
                     $(".add-results").html(embeddedVideo);
 //                    console.log(JSON.parse(addedVideo));
+
+                    var video = $("#ytplayer").attr("src");
+                    $("#ytplayer").attr("src","");
+                    $("#ytplayer").attr("src",video);
 
 
                     //    ----------------------- Add Video ---------------------------
@@ -286,6 +297,7 @@ $(function() {
 
                     $(".save-button").click(function(event) {
                         event.preventDefault();
+                        $('html').scrollTop(0);
 
 
                         let mylist = {
@@ -337,6 +349,7 @@ $(function() {
 
     $(".signup-form").submit(function(event){
         event.preventDefault();
+        $('html').scrollTop(0);
 
         let user = {
             name: $("#name-input").val(),
@@ -382,7 +395,6 @@ $(function() {
                     contentType: "application/json",
                     dataType: "json"
                 });
-                //                location.replace('./mylist.html');
             },
             // headers: {
             //   'Authorization': 'Bearer ' + authToken
@@ -393,50 +405,6 @@ $(function() {
         });
 
     })
-
-
-
-
-
-
-
-    //===================== My List page control ===============
-
-
-
-////    ----------------------- Add Video ---------------------------
-//
-//
-//    $(".save-button").click(function(event) {
-//        event.preventDefault();
-//
-//
-//        let mylist = {
-//            videoTitle: pickedVideo.snippet.title,
-//            journal: $(".journal-textera").val(),
-//            video_url: pickedVideo.id.videoId
-//        };
-//
-//        $.ajax({
-//            url: `/api/mylist/add-video`,
-//            data: JSON.stringify(mylist),
-//            error: function(error) {
-//                console.log("error", error);
-//            },
-//            success: function(data) {
-//                mylistPage();
-//                console.log(data);
-//
-//            },
-//            headers: {
-//                "Authorization": "Bearer " + localStorage.getItem("token")
-//            },
-//            type: "POST",
-//            contentType: "application/json",
-//            dataType: "json"
-//        });
-//    });
-
 
 
 
@@ -486,22 +454,6 @@ $(function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //    ===================== Nav Buttons jQuery=============
 
 
@@ -509,6 +461,11 @@ $(function() {
 
 
     const searchVideoPage = function(){
+
+        //stop video when it's hidden
+        var video = $(".ytplayer").attr("src");
+        $(".ytplayer").attr("src","");
+        $(".ytplayer").attr("src",video);
 
         const addedVideo = localStorage.getItem('storedVideo');
 
@@ -526,7 +483,7 @@ $(function() {
             $(".mylist-section").hide();
         };
         if(!authToken) {
-            console.log('unlogged');
+//            console.log('unlogged');
 
             $(".main-section").show();
             $(".youtube-search-result").hide();
@@ -541,31 +498,37 @@ $(function() {
 
     $("#nav-video-search-button0").click(function(e){
         e.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
 
         searchVideoPage();
     });
     $("#nav-video-search-button1").click(function(e){
         e.preventDefault();
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button2").click(function(e){
         e.preventDefault();
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button3").click(function(e){
         e.preventDefault();
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button4").click(function(e){
         e.preventDefault();
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button5").click(function(e){
         e.preventDefault();
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
@@ -587,11 +550,12 @@ $(function() {
 
 
     $("#nav-signup-button ").click( e => {
+        $('html').scrollTop(0);
         signUpPage(e);
     })
 
     $("#nav-signup-button2 ").click( e => {
-
+        $('html').scrollTop(0);
         signUpPage(e);
     })
 
@@ -610,10 +574,12 @@ $(function() {
     }
 
     $("#nav-login-button").click(e => {
+        $('html').scrollTop(0);
         loginPage(e);
     });
 
     $("#nav-login-button2").click(e => {
+        $('html').scrollTop(0);
         loginPage(e);
     });
 
@@ -631,7 +597,7 @@ $(function() {
         $(".mylist-section").hide();
 
         if(addedVideo){
-            console.log(JSON.parse(addedVideo));
+//            console.log(JSON.parse(addedVideo));
         };
     }
 
@@ -641,6 +607,10 @@ $(function() {
     let mylistData = [];
 
     const mylistPage = function(){
+
+        var video = $(".ytplayer").attr("src");
+        $(".ytplayer").attr("src","");
+        $(".ytplayer").attr("src",video);
 
         $(".main-section").hide();
         $(".signup-section").hide();
@@ -674,7 +644,8 @@ $(function() {
                     </div>
                 </div>
             </li>
-                    `
+                    `;
+
         };
 
 
@@ -684,7 +655,7 @@ $(function() {
             dataType: "json",
             type: "GET",
             success: function(data) {
-            console.log(data);
+//            console.log(data);
 
             mylistData = data;
 
@@ -692,7 +663,7 @@ $(function() {
                 return renderResults(item, index);
             });
 
-                $(".mylist-results ul").html(displayResults);
+            $(".mylist-results ul").html(displayResults);
 
 
             },
@@ -713,10 +684,15 @@ $(function() {
 
         event.preventDefault();
         event.stopPropagation();
+        $('html').scrollTop(0);
+
+        var video = $(".ytplayer").attr("src");
+        $(".ytplayer").attr("src","");
+        $(".ytplayer").attr("src",video);
 
 
         let editJournal = mylistData[$(this).attr("video-index")];
-        console.log(editJournal);
+//        console.log(editJournal);
 
 
         addPage();
@@ -758,6 +734,7 @@ $(function() {
         $(".edit-save-button").click(function(event) {
             event.preventDefault();
             event.stopPropagation();
+            $('html').scrollTop(0);
 
 
             let editedMylist = {
@@ -800,7 +777,7 @@ $(function() {
 
 
         let editJournal = mylistData[$(this).attr("video-index")];
-        console.log(editJournal.id);
+//        console.log(editJournal.id);
 
         $.ajax({
             url: `/api/mylist/${editJournal.id}`,
@@ -808,7 +785,7 @@ $(function() {
                 console.log("error", error);
             },
             success: function(data) {
-                                    console.log("good");
+//                console.log("good");
                 mylistPage();
 
             },
@@ -825,54 +802,27 @@ $(function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //    ---------------------------- My list Button -----------------------------------
 
 
     $("#nav-mylist-button1").click(e => {
         e.preventDefault();
-        console.log("mylist");
+        $('html').scrollTop(0);
 
         mylistPage(e);
     });
     $("#nav-mylist-button2").click(e => {
         e.preventDefault();
-        console.log("mylist");
+        $('html').scrollTop(0);
 
         mylistPage(e);
     });
     $("#nav-mylist-button3").click(e => {
         e.preventDefault();
-        console.log("mylist");
+        $('html').scrollTop(0);
 
         mylistPage(e);
     });
-
 
 
 })
