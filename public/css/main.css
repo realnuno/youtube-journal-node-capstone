@@ -34,23 +34,25 @@ body {
 }
 
 
+
+/*====================================== Nav Bar ==================================================*/
+
 .nav-bar {
     background-color: #ffffff;
     position: fixed;
+    color: #cc181e;
     width: 100%;
     padding: 13px 60px;
     box-shadow: 0px 5px 5px 0px rgba(158,158,158,1);
 }
 
-.main-search,
-.main-nav,
-.main-nav li {
-    display: inline-block;
-}
-
-.main-nav {
-    float: right;
-    list-style: none;
+.main-nav-bar {
+    background-color: #ffffff;
+    position: fixed;
+    color: #cc181e;
+    width: 100%;
+    padding: 13px 60px;
+/*    box-shadow: 0px 5px 5px 0px rgba(158,158,158,1);*/
 }
 
 
@@ -60,21 +62,48 @@ body {
     text-decoration: none;
 }
 
+.video-search,
+.main-nav li {
+    display: inline-block;
+}
+
+.main-nav {
+    float: right;
+    list-style: none;
+}
+
 .main-nav li {
     margin-right: 15px;
 }
 
 
-.main-page,
+
+.main-page {
+    /*    display: table;*/
+    padding-top: 200px;
+    height: 100vh;
+    width: 100%;
+/*    position: relative;*/
+    color: #ffffff;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url(apple-blur-business-533463.jpg) no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: initial;
+}
+
+
+
 .login-page,
-.signup-page,
-.mylist-main{
+.signup-page {
     padding-top: 200px;
     width: 100%;
     background-color: #f8f8f8;
     text-align: center;
     height: 100vh;
     width: 100%;
+}
+
+.individualResult {
+    margin-bottom: 20px;
 }
 
 
@@ -86,8 +115,13 @@ body {
 }
 
 .main-page h1 {
+    font-size: 50px;
     margin-top: 40px;
     margin-bottom: 60px;
+}
+
+#tube {
+    color: #ce393e;
 }
 
 .search-input,
@@ -127,14 +161,6 @@ body {
 
 .fa-youtube-square {
     color:#cc181e;
-}
-
-footer {
-    background-color: #585858;
-    height: 160px;
-    color: #ebebeb;
-    padding-top: 50px;
-    text-align: center;
 }
 
 
@@ -227,7 +253,8 @@ footer {
 /*---------My List----------------*/
 
 .mylist-main {
-    padding-top: 200px;
+    padding-top: 140px;
+    padding-bottom: 30px;
     width: 100%;
     background-color: #f8f8f8;
     text-align: center;
@@ -319,6 +346,14 @@ footer {
 
 
 
+
+footer {
+    background-color: #585858;
+    height: 160px;
+    color: #ebebeb;
+    padding-top: 50px;
+    text-align: center;
+}
 
 
 

@@ -13,8 +13,6 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 
 router.get("/", jwtAuth, (req, res) => {
 
-    console.log(req);
-
     Mylist.find()
         .populate("user")
         .sort({ creationDate: -1 })

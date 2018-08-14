@@ -362,11 +362,10 @@ $(function() {
             url: '/api/users',
             data:  JSON.stringify(user),
             error: function(error) {
-                console.log('error', error);
+                alert(error.responseJSON.message);
             },
             success: function(data) {
 
-//                console.log(data);
 
                 $.ajax({
                     url: `/api/auth/login`,

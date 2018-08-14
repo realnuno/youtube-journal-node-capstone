@@ -19,15 +19,15 @@
 
     <section class="main-section">
         <nav>
-            <div class="unlogged nav-bar">
-                <div id="nav-video-search-button0">Video Search</div>
+            <div class="unlogged main-nav-bar">
+                <div class="video-search" id="nav-video-search-button0">Video Search</div>
                 <ul class="main-nav">
                     <li><div id="nav-signup-button" >Sign UP</div></li>
                     <li><div id="nav-login-button">Log In</div></li>
                 </ul>
              </div>
-            <div class="logged nav-bar" hidden>
-                <div id="nav-video-search-button1">Video Search</div>
+            <div class="logged main-nav-bar" hidden>
+                <div class="video-search" id="nav-video-search-button1">Video Search</div>
                  <ul class="main-nav" >
                     <li><div id="nav-mylist-button1">mylist</div></li>
                      <li><div id="nav-logout-button1">Logout</div></li>
@@ -39,7 +39,7 @@
 
        <div class="main-page">
            <div class="row">
-               <h1>YouTube - Journal</h1>
+               <h1>You<span id="tube">Tube</span> - Journal</h1>
                <form class="search-form">
                    <input type="text" class="search-input" id="search-input" name="search-input" placeholder="Search video">
                    <button type="submit">Search</button>
@@ -89,7 +89,7 @@
     <section class="signup-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div id="nav-video-search-button2">Video Search</div>
+                <div class="video-search" id="nav-video-search-button2">Video Search</div>
                 <ul class="main-nav">
                     <li><div id="nav-login-button2">Login</div></li>
                 </ul>
@@ -103,9 +103,9 @@
                 <div class="col-12">
                     <h1>Sign Up</h1>
                     <form class="signup-form">
-                        <input type="text" id="name-input" name="name-input" placeholder="name">
-                        <input type="text" id="email-input" name="email-input" placeholder="email">
-                        <input type="text" id="password-input" name="password-input" placeholder="password">
+                        <input type="text" id="name-input" name="name-input" placeholder="name" required>
+                        <input type="email" id="email-input" name="email-input" placeholder="email" required>
+                        <input type="password" id="password-input" name="password-input" placeholder="password" required>
 
                         <button class="signup-button" type="submit">Sign up</button>
                     </form>
@@ -123,7 +123,7 @@
     <section class="login-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div id="nav-video-search-button3">Video Search</div>
+                <div class="video-search" id="nav-video-search-button3">Video Search</div>
                 <ul class="main-nav">
                     <li><div id="nav-signup-button2" >Sign UP</div></li>
                 </ul>
@@ -137,8 +137,8 @@
                 <div class="col-12">
                     <h1>Login</h1>
                     <form id="login-form">
-                        <input type="text"  id="login-email-input" name="email-input" placeholder="email">
-                        <input type="text" id="login-password-input" name="password-input" placeholder="password">
+                        <input type="email"  id="login-email-input" name="email-input" placeholder="email" required>
+                        <input type="password" id="login-password-input" name="password-input" placeholder="password" required>
                         <button class="login-button" type="submit">Login</button>
                     </form>
                 </div>
@@ -159,7 +159,7 @@
     <section class="add-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div id="nav-video-search-button4">Video Search</div>
+                <div class="video-search" id="nav-video-search-button4">Video Search</div>
                 <ul class="main-nav">
                     <li><div id="nav-mylist-button2">mylist</div></li>
                     <li><div id="nav-logout-button2">Logout</div></li>
@@ -186,7 +186,7 @@
     <section class="mylist-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div id="nav-video-search-button5">Video Search</div>
+                <div class="video-search" id="nav-video-search-button5">Video Search</div>
                 <ul class="main-nav">
                     <li><div id="nav-mylist-button3">mylist</div></li>
                     <li><div id="nav-logout-button3">Logout</div></li>
