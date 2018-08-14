@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
+    <!--    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>-->
     <link rel="stylesheet" type="text/css" href="css/grid.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <title>YouTube-Journal</title>
 </head>
+
 <body>
 
 
@@ -20,62 +20,70 @@
     <section class="main-section">
         <nav>
             <div class="unlogged main-nav-bar">
-                <div class="video-search" id="nav-video-search-button0">Video Search</div>
+                <div class="button video-search" id="nav-video-search-button0">Video Search</div>
                 <ul class="main-nav">
-                    <li><div id="nav-signup-button" >Sign UP</div></li>
-                    <li><div id="nav-login-button">Log In</div></li>
+                    <li>
+                        <div class="button" id="nav-signup-button">Sign UP</div>
+                    </li>
+                    <li>
+                        <div class="button" id="nav-login-button">Log In</div>
+                    </li>
                 </ul>
-             </div>
+            </div>
             <div class="logged main-nav-bar" hidden>
-                <div class="video-search" id="nav-video-search-button1">Video Search</div>
-                 <ul class="main-nav" >
-                    <li><div id="nav-mylist-button1">mylist</div></li>
-                     <li><div id="nav-logout-button1">Logout</div></li>
+                <div class="video-search button" id="nav-video-search-button1">Video Search</div>
+                <ul class="main-nav">
+                    <li>
+                        <div class="button" id="nav-mylist-button1">mylist</div>
+                    </li>
+                    <li>
+                        <div class="button" id="nav-logout-button1">Logout</div>
+                    </li>
                 </ul>
             </div>
         </nav>
 
 
 
-       <div class="main-page">
-           <div class="row">
-               <h1>You<span id="tube">Tube</span> - Journal</h1>
-               <form class="search-form">
-                   <input type="text" class="search-input" id="search-input" name="search-input" placeholder="Search video">
-                   <button type="submit">Search</button>
-               </form>
-           </div>
-       </div>
+        <div class="main-page">
+            <div class="row introduce">
+                <h1>You<span id="tube">Tube</span> - Journal</h1>
+                <form class="search-form">
+                    <input type="text" class="search-input" id="search-input" name="search-input" placeholder="Search video">
+                    <button class="button" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
 
-       <div class="row youtube-search-result" hidden>
+        <div class="row youtube-search-result" hidden>
 
-           <h2>Results</h2>
-           <div id="search-results" aria-live="assertive">
-               <ul>
+            <h2>Results</h2>
+            <div id="search-results" aria-live="assertive">
+                <ul>
 
-               </ul>
-           </div>
-           <div class="buttonOptions col-12">
-               <button class="tokenClass" value="Previous">Prev</button>
-               <button class="tokenClass" value="Next">Next</button>
-           </div>
-       </div>
+                </ul>
+            </div>
+            <div class="buttonOptions col-12">
+                <button class="tokenClass button" value="Previous">Prev</button>
+                <button class="tokenClass button" value="Next">Next</button>
+            </div>
+        </div>
 
 
-       <div class="row about-this-app">
-           <div class="col-4 youtube-about">
-               <i class="fab fa-youtube-square"></i>
-               <p>You can search Your video.</p>
-           </div>
-           <div class="col-4 save-video-about">
-               <i class="fas fa-download"></i>
-               <p>You can save your own video list.</p>
-           </div>
-           <div class="col-4 journal-about">
-               <i class="fas fa-pencil-alt"></i>
-               <p>You can write your own journal.</p>
-           </div>
-       </div>
+        <div class="row about-this-app">
+            <div class="col-4 youtube-about">
+                <i class="fab fa-youtube-square"></i>
+                <p>You can search Your video.</p>
+            </div>
+            <div class="col-4 save-video-about">
+                <i class="fas fa-download"></i>
+                <p>You can save your own video list.</p>
+            </div>
+            <div class="col-4 journal-about">
+                <i class="fas fa-pencil-alt"></i>
+                <p>You can write your own journal.</p>
+            </div>
+        </div>
     </section>
 
 
@@ -89,9 +97,11 @@
     <section class="signup-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div class="video-search" id="nav-video-search-button2">Video Search</div>
+                <div class="button video-search" id="nav-video-search-button2">Video Search</div>
                 <ul class="main-nav">
-                    <li><div id="nav-login-button2">Login</div></li>
+                    <li>
+                        <div class="button" id="nav-login-button2">Login</div>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -107,13 +117,13 @@
                         <input type="email" id="email-input" name="email-input" placeholder="email" required>
                         <input type="password" id="password-input" name="password-input" placeholder="password" required>
 
-                        <button class="signup-button" type="submit">Sign up</button>
+                        <button class="button signup-button" type="submit">Sign up</button>
                     </form>
                 </div>
             </div>
         </div>
 
-     </section>
+    </section>
 
 
 
@@ -123,9 +133,11 @@
     <section class="login-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div class="video-search" id="nav-video-search-button3">Video Search</div>
+                <div class="button video-search" id="nav-video-search-button3">Video Search</div>
                 <ul class="main-nav">
-                    <li><div id="nav-signup-button2" >Sign UP</div></li>
+                    <li>
+                        <div class="button" id="nav-signup-button2">Sign UP</div>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -137,9 +149,9 @@
                 <div class="col-12">
                     <h1>Login</h1>
                     <form id="login-form">
-                        <input type="email"  id="login-email-input" name="email-input" placeholder="email" required>
+                        <input type="email" id="login-email-input" name="email-input" placeholder="email" required>
                         <input type="password" id="login-password-input" name="password-input" placeholder="password" required>
-                        <button class="login-button" type="submit">Login</button>
+                        <button class="button login-button" type="submit">Login</button>
                     </form>
                 </div>
             </div>
@@ -153,16 +165,20 @@
 
 
 
-
+    <!--========================== Add & Edit Section =========================-->
 
 
     <section class="add-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div class="video-search" id="nav-video-search-button4">Video Search</div>
+                <div class="button video-search" id="nav-video-search-button4">Video Search</div>
                 <ul class="main-nav">
-                    <li><div id="nav-mylist-button2">mylist</div></li>
-                    <li><div id="nav-logout-button2">Logout</div></li>
+                    <li>
+                        <div class="button" id="nav-mylist-button2">mylist</div>
+                    </li>
+                    <li>
+                        <div class="button" id="nav-logout-button2">Logout</div>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -186,10 +202,14 @@
     <section class="mylist-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div class="video-search" id="nav-video-search-button5">Video Search</div>
+                <div class="button video-search" id="nav-video-search-button5">Video Search</div>
                 <ul class="main-nav">
-                    <li><div id="nav-mylist-button3">mylist</div></li>
-                    <li><div id="nav-logout-button3">Logout</div></li>
+                    <li>
+                        <div class="button" id="nav-mylist-button3">mylist</div>
+                    </li>
+                    <li>
+                        <div class="button" id="nav-logout-button3">Logout</div>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -214,6 +234,9 @@
             <p>Footer</p>
         </div>
     </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="magnific-popup/jquery.magnific-popup.js"></script>
     <script src="client.js"></script>
 </body>
+
 </html>

@@ -5,7 +5,9 @@
     box-sizing: border-box;
 }
 
-*:focus {outline: none;}
+*:focus {
+    outline: none;
+}
 
 html,
 body {
@@ -18,7 +20,10 @@ body {
     overflow-x: hidden;
 }
 
-.clearfix {zoom: 1;}
+.clearfix {
+    zoom: 1;
+}
+
 .clearfix:after {
     content: '.';
     clear: both;
@@ -27,11 +32,6 @@ body {
     visibility: hidden;
 }
 
-
-.row {
-    max-width: 1140px;
-    margin: 0 auto;
-}
 
 
 
@@ -43,7 +43,7 @@ body {
     color: #cc181e;
     width: 100%;
     padding: 13px 60px;
-    box-shadow: 0px 5px 5px 0px rgba(158,158,158,1);
+    box-shadow: 0px 5px 5px 0px rgba(158, 158, 158, 1);
 }
 
 .main-nav-bar {
@@ -52,7 +52,7 @@ body {
     color: #cc181e;
     width: 100%;
     padding: 13px 60px;
-/*    box-shadow: 0px 5px 5px 0px rgba(158,158,158,1);*/
+    box-shadow: 0px 5px 5px 0px rgba(158, 158, 158, 1);
 }
 
 
@@ -77,35 +77,76 @@ body {
 }
 
 
+/*----------------------------------------- Inputs ------------------------------------------------------*/
+
+.search-input,
+.email-input,
+.password-input,
+.name-input {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    width: 35%;
+    min-width: 400px;
+    /*    margin: 10px auto;*/
+    height: 45px;
+    padding-left: 15px;
+    border-radius: 5px;
+}
+
+
+/*----------------------------------------- Buttons ------------------------------------------------------*/
+
+.button {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 21px;
+    text-rendering: optimizeLegibility;
+    padding: 10px 25px;
+    border-radius: 9px;
+
+}
+
+.button:hover {
+    background-color: #cc181e;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s,
+    color 0.2s;
+}
+
+
+
+
+
+
+
+/*--------------------------------Main Page----------------------------------------------*/
 
 .main-page {
     /*    display: table;*/
+    text-align: center;
     padding-top: 200px;
     height: 100vh;
     width: 100%;
-/*    position: relative;*/
-    color: #ffffff;
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url(apple-blur-business-533463.jpg) no-repeat center center fixed;
+    /*    position: relative;*/
+    color: #000000;
+    background: linear-gradient(rgba(0, 0, 0, 0.53), rgba(0, 0, 0, 0)), url(apple-blur-business-533463.jpg) no-repeat center center fixed;
+    /*    background-color: #f8f8f8;*/
     background-size: cover;
     background-attachment: initial;
 }
 
-
-
-.login-page,
-.signup-page {
-    padding-top: 200px;
-    width: 100%;
-    background-color: #f8f8f8;
-    text-align: center;
-    height: 100vh;
-    width: 100%;
+.introduce {
+    display: inline-block;
+    width: 40%;
+    min-width: 600px;
+    background-color: rgba(255, 255, 255, 0.92);
+    margin-top: 10%;
+    padding: 30px 70px;
+    border-radius: 30px;
 }
-
-.individualResult {
-    margin-bottom: 20px;
-}
-
 
 
 
@@ -121,35 +162,67 @@ body {
 }
 
 #tube {
-    color: #ce393e;
+    background-color: #ce393e;
+    color: #ffffff;
+    padding: 5px;
+    margin-left: 4px;
+    border-radius: 17px;
 }
 
-.search-input,
-.search-form button,
-{
+.search-form {
     margin-top: 30px;
-    font-size: 15px;
-}
-
-.search-input {
-    width:40%;
-    height: 35px;
-    padding-left: 15px;
-    border-radius: 5px;
-}
-
-
-.search-form button {
-    height: 35px;
+    margin-bottom: 40px;
+    height: 45px;
+    font-size: 20px;
     padding: 0 15px;
     border-radius: 5px;
-/*    background-color:#e52128;*/
 }
 
 
+
+
+
+
+
+
+
+
+/*-------------------------------------- Search results ---------------------------------------*/
+
+.individualResult {
+    margin-bottom: 20px;
+}
+
+.addVideoButton {
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.login-page,
+.signup-page {
+    padding-top: 200px;
+    width: 100%;
+    background-color: #f8f8f8;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+}
+
+
+/*------------------------------------------- Footer ---------------------------------------------*/
+
 .about-this-app {
-    margin-top: 60px;
-    margin-bottom: 80px;
+    margin-top: 120px;
+    margin-bottom: 120px;
     text-align: center;
 }
 
@@ -160,13 +233,12 @@ body {
 }
 
 .fa-youtube-square {
-    color:#cc181e;
+    color: #cc181e;
 }
 
 
 
-
-
+/*----------------------------------------------Result Page --------------------------------------------------------*/
 
 .youtube-search-result {
     margin-top: 40px;
@@ -181,11 +253,12 @@ body {
 #search-results li {
     text-align: center;
     list-style: none;
-    border: 1px #c7c7c7 solid;
+    border: 1px #e2e2e2 solid;
+    background-color: #fafafa;
     padding-top: 30px;
     margin: 50px 20% 0 20%;
     border-radius: 5px;
-    box-shadow: 4px 4px 5px 0px rgba(128,128,128,1);
+    box-shadow: 4px 4px 5px 0px rgba(128, 128, 128, 1);
 }
 
 #search-results ul {
@@ -196,49 +269,24 @@ body {
     width: 90%;
     border-radius: 7px;
     margin-bottom: 15px;
-    box-shadow: 4px 4px 5px 0px rgba(128,128,128,1);
+    box-shadow: 4px 4px 5px 0px rgba(128, 128, 128, 1);
 }
 
+.video-result p {
+    margin: 10px 0;
+}
+
+
+/*========================================= Add & Edit Section ============================================*/
 
 .add-video {
-   font-size: 20px;
+    font-size: 20px;
     height: 30px;
     width: 100%;
-    margin:15px 0 25px 0;
+    margin: 15px 0 25px 0;
 }
 
 
-
-
-
-
-
-
-.email-input,
-.password-input,
-.login-button,
-.signup-button,
-.name-input {
-    display: block;
-    width: 40%;
-    min-width: 500px;
-    margin: 10px auto;
-    height: 35px;
-    padding-left: 15px;
-    border-radius: 5px;
-}
-
-
-
-.login-button,
-.signup-button
-{
-    margin-top: 30px;
-    font-size: 15px;
-    height: 35px;
-    padding: 0 15px;
-    border-radius: 5px;
-}
 
 
 
@@ -278,23 +326,18 @@ body {
 }
 
 .mylist-video {
-    border:1px black solid;
+    border: 1px black solid;
 }
 
 .mylist-joutnal {
-    border-top:1px black solid;
-    border-bottom:1px black solid;
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
 }
 
 .mylist-buttons {
-    border:1px black solid;
+    border: 1px black solid;
     padding-top: 70px;
 
-}
-
-.mylist-buttons button {
-    height: 40px;
-    width: 70px;
 }
 
 .mylist-results li {
@@ -312,35 +355,30 @@ body {
 
 /*--------------Add -----------------*/
 
-
 .add-main {
     padding-top: 150px;
     margin-bottom: 100px;
 }
+
 .add-video,
-.add-joutnal{
+.add-joutnal {
     height: 200px;
 }
 
 .add-video {
-    border:1px black solid;
+    border: 1px black solid;
 }
 
 .add-joutnal {
     padding: 16px;
-    border-top:1px black solid;
-    border-bottom:1px black solid;
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
 }
 
 .add-button {
-    border:1px black solid;
+    border: 1px black solid;
     padding-top: 70px;
 
-}
-
-.add-button button {
-    height: 40px;
-    width: 70px;
 }
 
 
@@ -354,13 +392,3 @@ footer {
     padding-top: 50px;
     text-align: center;
 }
-
-
-
-
-
-
-
-
-
-

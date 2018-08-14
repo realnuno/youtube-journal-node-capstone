@@ -1,21 +1,23 @@
-$(function() {
+$(function () {
 
 
 
 
 
-//===================== YouTube API =========================
+    //===================== YouTube API =========================
 
 
 
 
-    let query="";
+    let query = "";
 
     $(".search-form").submit(event => {
 
         event.preventDefault();
         event.stopPropagation();
-        $('html').animate({ scrollTop: 630 }, 'fast');
+        $('html').animate({
+            scrollTop: 1250
+        }, 'fast');
 
         $('.youtube-search-result').show();
 
@@ -32,11 +34,13 @@ $(function() {
 
     let pageTokenCurrent;
 
-    $(".tokenClass").click(function(event){
+    $(".tokenClass").click(function (event) {
 
-        $('html').animate({ scrollTop: 630 }, 'fast');
+        $('html').animate({
+            scrollTop: 1250
+        }, 'fast');
 
-        if($(event.currentTarget).val() == "Next"){
+        if ($(event.currentTarget).val() == "Next") {
             pageTokenCurrent = nextPage;
 
         } else {
@@ -51,17 +55,17 @@ $(function() {
 
 
 
-    function getResults(userInput, callback){
+    function getResults(userInput, callback) {
 
         const settings = {
-            url : "/api/search",
-            data : {
+            url: "/api/search",
+            data: {
                 pageToken: pageTokenCurrent,
                 q: userInput
             },
             type: "GET",
-            dataType : "json",
-            success : callback
+            dataType: "json",
+            success: callback
         };
 
         $.ajax(settings);
@@ -72,17 +76,17 @@ $(function() {
     let videoInfo = [];
 
 
-    function displayYoutubeData(data){
+    function displayYoutubeData(data) {
 
         videoInfo = data.items;
 
-//        console.log(videoInfo);
+        //        console.log(videoInfo);
 
         nextPage = data.nextPageToken;
         prevPage = data.prevPageToken;
 
 
-        const html = data.items.map(function(item, index){
+        const html = data.items.map(function (item, index) {
 
             return renderResult(item, index);
 
@@ -95,18 +99,22 @@ $(function() {
 
 
 
-    function renderResult(resultInput, index){
+    function renderResult(resultInput, index) {
 
         return `
 <li>
-    <div class="video-result" data-index="${index}">
-        <a href = "https://www.youtube.com/watch?v=${resultInput.id.videoId}" target = "_blank">
+    <div class="video-result" >
+        <a class="popup-youtube" href = "" >
         <img src = "${resultInput.snippet.thumbnails.medium.url}" alt="${resultInput.snippet.title}"></a>
-        <p>${resultInput.snippet.channelTitle}</p>
-        <button type="submit" class="add-video-button">ADD</button>
+        <p>${resultInput.snippet.title}</p>
+        <button type="submit" class="button addVideoButton" data-index="${index}">add</button>
     </div>
 </li>
 `
+        const videoUrl = `https://www.youtube.com/watch?v=${resultInput.id.videoId}`;
+
+        $(".popup-youtube").prop('hidden', false).attr("href", videoUrl);
+
     };
 
 
@@ -116,12 +124,13 @@ $(function() {
 
 
 
-//============== Pick video ============
+    //============== Pick video ============
 
     let pickedVideo;
 
 
-    $("#search-results ul").on("click", ".video-result", function(event) {
+
+    $("#search-results ul").on("click", ".addVideoButton", function (event) {
 
         $('html').scrollTop(0);
         event.preventDefault();
@@ -135,15 +144,15 @@ $(function() {
 
 
 
-        if(!authToken){
+        if (!authToken) {
             $(".main-section").hide();
             $(".login-section").show();
         };
-        if(authToken){
+        if (authToken) {
 
             addPage();
 
-//            console.log(pickedVideo);
+            //            console.log(pickedVideo);
 
             const embeddedVideo = `
             <div class="row">
@@ -164,7 +173,7 @@ $(function() {
             <div class="row">
                 <div class="col-12">
                     <div class="col-12 add-button">
-                        <button class="save-button">save</button>
+                    <button class="button save-button">save</button>
                     </div>
                 </div>
             </div>
@@ -176,7 +185,7 @@ $(function() {
             //    ----------------------- Add Video ---------------------------
 
 
-            $(".save-button").click(function(event) {
+            $(".save-button").click(function (event) {
                 event.preventDefault();
                 $('html').scrollTop(0);
 
@@ -189,12 +198,12 @@ $(function() {
                 $.ajax({
                     url: `/api/mylist/add-video`,
                     data: JSON.stringify(mylist),
-                    error: function(error) {
+                    error: function (error) {
                         console.log("error", error);
                     },
-                    success: function(data) {
+                    success: function (data) {
                         mylistPage();
-//                        console.log(data);
+                        //                        console.log(data);
 
                     },
                     headers: {
@@ -213,11 +222,11 @@ $(function() {
 
 
 
-//    ==================  Login Section===================
+    //    ==================  Login Section===================
 
     let loginUserName;
 
-    $("#login-form").submit(function(event) {
+    $("#login-form").submit(function (event) {
         event.preventDefault();
         $('html').scrollTop(0);
 
@@ -231,10 +240,10 @@ $(function() {
         $.ajax({
             url: `/api/auth/login`,
             data: JSON.stringify(logUser),
-            error: function(error) {
+            error: function (error) {
                 console.log("error", error);
             },
-            success: function(data) {
+            success: function (data) {
 
 
                 localStorage.setItem("token", data.authToken);
@@ -242,13 +251,13 @@ $(function() {
                 console.log(data.authToken);
 
                 let addedVideo;
-                if(pickedVideo){
-                     addedVideo = JSON.parse(localStorage.getItem('storedVideo'));
-//                     console.log(addedVideo);
-                 };
+                if (pickedVideo) {
+                    addedVideo = JSON.parse(localStorage.getItem('storedVideo'));
+                    //                     console.log(addedVideo);
+                };
 
 
-                if(addedVideo){
+                if (addedVideo) {
 
                     addPage();
 
@@ -271,7 +280,7 @@ $(function() {
                         <div class="row">
                         <div class="col-12">
                         <div class="col-12 add-button">
-                        <button class="save-button">save</button>
+                        <button class="button save-button">save</button>
                         </div>
                         </div>
                         </div>
@@ -279,17 +288,17 @@ $(function() {
 
 
                     $(".add-results").html(embeddedVideo);
-//                    console.log(JSON.parse(addedVideo));
+                    //                    console.log(JSON.parse(addedVideo));
 
                     var video = $("#ytplayer").attr("src");
-                    $("#ytplayer").attr("src","");
-                    $("#ytplayer").attr("src",video);
+                    $("#ytplayer").attr("src", "");
+                    $("#ytplayer").attr("src", video);
 
 
-//    ----------------------- Add Video ---------------------------
+                    //    ----------------------- Add Video ---------------------------
 
 
-                    $(".save-button").click(function(event) {
+                    $(".save-button").click(function (event) {
                         event.preventDefault();
                         $('html').scrollTop(0);
 
@@ -303,12 +312,12 @@ $(function() {
                         $.ajax({
                             url: `/api/mylist/add-video`,
                             data: JSON.stringify(mylist),
-                            error: function(error) {
+                            error: function (error) {
                                 console.log("error", error);
                             },
-                            success: function(data) {
+                            success: function (data) {
                                 mylistPage();
-//                                console.log(data);
+                                //                                console.log(data);
 
                             },
                             headers: {
@@ -320,11 +329,11 @@ $(function() {
                         });
                     });
                 }
-                if(!addedVideo){
+                if (!addedVideo) {
 
                     mylistPage();
                 }
-//
+                //
             },
             // headers: {
             //   'Authorization': 'Bearer ' + authToken
@@ -337,11 +346,11 @@ $(function() {
 
 
 
-//=================== Sign Up Section =======================
+    //=================== Sign Up Section =======================
 
 
 
-    $(".signup-form").submit(function(event){
+    $(".signup-form").submit(function (event) {
         event.preventDefault();
         $('html').scrollTop(0);
 
@@ -360,22 +369,22 @@ $(function() {
 
         $.ajax({
             url: '/api/users',
-            data:  JSON.stringify(user),
-            error: function(error) {
+            data: JSON.stringify(user),
+            error: function (error) {
                 alert(error.responseJSON.message);
             },
-            success: function(data) {
+            success: function (data) {
 
 
                 $.ajax({
                     url: `/api/auth/login`,
                     data: JSON.stringify(loginUser),
-                    error: function(error) {
+                    error: function (error) {
                         console.log("error", error);
                     },
-                    success: function(data) {
+                    success: function (data) {
 
-//                        console.log("logged in!");
+                        //                        console.log("logged in!");
 
                         loginUserName = loginUser.email;
                         localStorage.setItem("token", data.authToken);
@@ -405,17 +414,17 @@ $(function() {
 
 
 
-//=====================  Log Out Section ====================
+    //=====================  Log Out Section ====================
 
-    const logOut = function(){
+    const logOut = function () {
 
         location.reload();
 
         localStorage.setItem("token", "");
         localStorage.setItem('storedVideo', "");
-//        searchVideoPage();
-//        const authToken = localStorage.getItem("token");
-//        console.log(authToken);
+        //        searchVideoPage();
+        //        const authToken = localStorage.getItem("token");
+        //        console.log(authToken);
 
         $(".main-section").show();
         $(".logged").hide();
@@ -430,16 +439,16 @@ $(function() {
     };
 
 
-    $("#nav-logout-button1").click(function(event) {
-//        event.preventDefault();
+    $("#nav-logout-button1").click(function (event) {
+        //        event.preventDefault();
         logOut();
     });
-    $("#nav-logout-button2").click(function(event) {
-//        event.preventDefault();
+    $("#nav-logout-button2").click(function (event) {
+        //        event.preventDefault();
         logOut();
     });
-    $("#nav-logout-button3").click(function(event) {
-//        event.preventDefault();
+    $("#nav-logout-button3").click(function (event) {
+        //        event.preventDefault();
         logOut();
     });
 
@@ -447,24 +456,24 @@ $(function() {
 
 
 
-//    ===================== Nav Buttons jQuery=============
+    //    ===================== Nav Buttons jQuery=============
 
 
-//    ------------- Search Video ---------
+    //    ------------- Search Video ---------
 
 
-    const searchVideoPage = function(){
+    const searchVideoPage = function () {
 
         //stop video when it's hidden
         var video = $(".ytplayer").attr("src");
-        $(".ytplayer").attr("src","");
-        $(".ytplayer").attr("src",video);
+        $(".ytplayer").attr("src", "");
+        $(".ytplayer").attr("src", video);
 
         const addedVideo = localStorage.getItem('storedVideo');
 
         const authToken = localStorage.getItem("token");
 
-        if(authToken){
+        if (authToken) {
 
             $(".main-section").show();
             $(".youtube-search-result").hide();
@@ -475,8 +484,8 @@ $(function() {
             $(".add-section").hide();
             $(".mylist-section").hide();
         };
-        if(!authToken) {
-//            console.log('unlogged');
+        if (!authToken) {
+            //            console.log('unlogged');
 
             $(".main-section").show();
             $(".youtube-search-result").hide();
@@ -489,37 +498,39 @@ $(function() {
         }
     }
 
-    $("#nav-video-search-button0").click(function(e){
+    $("#nav-video-search-button0").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({ scrollTop: 0 }, 'fast');
+        $('html, body').animate({
+            scrollTop: 0
+        }, 'fast');
 
         searchVideoPage();
     });
-    $("#nav-video-search-button1").click(function(e){
-        e.preventDefault();
-        $('html').scrollTop(0);
-
-        searchVideoPage();
-    });
-    $("#nav-video-search-button2").click(function(e){
+    $("#nav-video-search-button1").click(function (e) {
         e.preventDefault();
         $('html').scrollTop(0);
 
         searchVideoPage();
     });
-    $("#nav-video-search-button3").click(function(e){
+    $("#nav-video-search-button2").click(function (e) {
         e.preventDefault();
         $('html').scrollTop(0);
 
         searchVideoPage();
     });
-    $("#nav-video-search-button4").click(function(e){
+    $("#nav-video-search-button3").click(function (e) {
         e.preventDefault();
         $('html').scrollTop(0);
 
         searchVideoPage();
     });
-    $("#nav-video-search-button5").click(function(e){
+    $("#nav-video-search-button4").click(function (e) {
+        e.preventDefault();
+        $('html').scrollTop(0);
+
+        searchVideoPage();
+    });
+    $("#nav-video-search-button5").click(function (e) {
         e.preventDefault();
         $('html').scrollTop(0);
 
@@ -528,10 +539,10 @@ $(function() {
 
 
 
-//-------------------  Sign Up --------------------
+    //-------------------  Sign Up --------------------
 
-    const signUpPage = function(e){
-            e.preventDefault();
+    const signUpPage = function (e) {
+        e.preventDefault();
 
         $(".main-section").hide();
         $(".signup-section").show();
@@ -541,21 +552,21 @@ $(function() {
     }
 
 
-    $("#nav-signup-button ").click( e => {
+    $("#nav-signup-button ").click(e => {
         $('html').scrollTop(0);
         signUpPage(e);
     })
 
-    $("#nav-signup-button2 ").click( e => {
+    $("#nav-signup-button2 ").click(e => {
         $('html').scrollTop(0);
         signUpPage(e);
     })
 
 
-//    ----------------------- Login ----------------
+    //    ----------------------- Login ----------------
 
 
-    const loginPage = function(e){
+    const loginPage = function (e) {
         e.preventDefault();
 
         $(".main-section").hide();
@@ -575,34 +586,34 @@ $(function() {
         loginPage(e);
     });
 
-//    -------------------------- Edit ---------------------
+    //    -------------------------- Edit ---------------------
 
 
     const addedVideo = localStorage.getItem('storedVideo');
 
 
-    const addPage = function(){
+    const addPage = function () {
         $(".main-section").hide();
         $(".signup-section").hide();
         $(".login-section").hide();
         $(".add-section").show();
         $(".mylist-section").hide();
 
-        if(addedVideo){
-//            console.log(JSON.parse(addedVideo));
+        if (addedVideo) {
+            //            console.log(JSON.parse(addedVideo));
         };
     }
 
 
 
-//----------------------- My List ---------------------------------------------------
+    //----------------------- My List ---------------------------------------------------
     let mylistData = [];
 
-    const mylistPage = function(){
+    const mylistPage = function () {
 
         var video = $(".ytplayer").attr("src");
-        $(".ytplayer").attr("src","");
-        $(".ytplayer").attr("src",video);
+        $(".ytplayer").attr("src", "");
+        $(".ytplayer").attr("src", video);
 
         $(".main-section").hide();
         $(".signup-section").hide();
@@ -614,7 +625,7 @@ $(function() {
 
 
 
-        const renderResults = function(resultInput, index){
+        const renderResults = function (resultInput, index) {
 
             return `
             <li>
@@ -631,8 +642,8 @@ $(function() {
                         <p>${resultInput.journal}</p>
                     </div>
                     <div class="col-4 mylist-buttons">
-                        <button class="edit-button" video-index="${index}">edit</button>
-                        <button class="delete-button" video-index="${index}">delete</button>
+                        <button class="button edit-button" video-index="${index}">edit</button>
+                        <button class="button delete-button" video-index="${index}">delete</button>
                     </div>
                 </div>
             </li>
@@ -646,25 +657,25 @@ $(function() {
             url: "/api/mylist/get-user-list",
             dataType: "json",
             type: "GET",
-            success: function(data) {
-//            console.log(data);
+            success: function (data) {
+                //            console.log(data);
 
-            mylistData = data;
+                mylistData = data;
 
-            const displayResults = data.map((item, index) => {
-                return renderResults(item, index);
-            });
+                const displayResults = data.map((item, index) => {
+                    return renderResults(item, index);
+                });
 
-            $(".mylist-results ul").html(displayResults);
+                $(".mylist-results ul").html(displayResults);
 
 
             },
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             },
-              error: function(error) {
-              console.log(error);
-              }
+            error: function (error) {
+                console.log(error);
+            }
         });
     };
 
@@ -672,19 +683,19 @@ $(function() {
 
     //-------------------------------- Edit button ------------------------------------
 
-    $(".mylist-results ul").on("click", ".edit-button", function(event) {
+    $(".mylist-results ul").on("click", ".edit-button", function (event) {
 
         event.preventDefault();
         event.stopPropagation();
         $('html').scrollTop(0);
 
         var video = $(".ytplayer").attr("src");
-        $(".ytplayer").attr("src","");
-        $(".ytplayer").attr("src",video);
+        $(".ytplayer").attr("src", "");
+        $(".ytplayer").attr("src", video);
 
 
         let editJournal = mylistData[$(this).attr("video-index")];
-//        console.log(editJournal);
+        //        console.log(editJournal);
 
 
         addPage();
@@ -709,7 +720,7 @@ $(function() {
             <div class="row">
             <div class="col-12">
             <div class="col-12 add-button">
-            <button class="edit-save-button">save</button>
+            <button class="button edit-save-button">save</button>
             </div>
             </div>
             </div>
@@ -723,7 +734,7 @@ $(function() {
 
 
 
-        $(".edit-save-button").click(function(event) {
+        $(".edit-save-button").click(function (event) {
             event.preventDefault();
             event.stopPropagation();
             $('html').scrollTop(0);
@@ -734,16 +745,16 @@ $(function() {
                 id: editJournal.id
             };
 
-//            console.log(editedMylist);
+            //            console.log(editedMylist);
 
             $.ajax({
                 url: `/api/mylist/edit-journal/${editJournal.id}`,
                 data: JSON.stringify(editedMylist),
-                error: function(error) {
+                error: function (error) {
                     console.log("error", error);
                 },
-                success: function(data) {
-//                    console.log("good");
+                success: function (data) {
+                    //                    console.log("good");
                     mylistPage();
 
                 },
@@ -758,10 +769,10 @@ $(function() {
     });
 
 
-//----------------------------------Delete Button------------------------------------------
+    //----------------------------------Delete Button------------------------------------------
 
 
-    $(".mylist-results ul").on("click", ".delete-button", function(event) {
+    $(".mylist-results ul").on("click", ".delete-button", function (event) {
 
         event.stopPropagation();
         event.preventDefault();
@@ -769,15 +780,15 @@ $(function() {
 
 
         let editJournal = mylistData[$(this).attr("video-index")];
-//        console.log(editJournal.id);
+        //        console.log(editJournal.id);
 
         $.ajax({
             url: `/api/mylist/${editJournal.id}`,
-            error: function(error) {
+            error: function (error) {
                 console.log("error", error);
             },
-            success: function(data) {
-//                console.log("good");
+            success: function (data) {
+                //                console.log("good");
                 mylistPage();
 
             },
@@ -794,7 +805,7 @@ $(function() {
 
 
 
-//    ---------------------------- My list Button -----------------------------------
+    //    ---------------------------- My list Button -----------------------------------
 
 
     $("#nav-mylist-button1").click(e => {
@@ -817,4 +828,36 @@ $(function() {
     });
 
 
+
+    /****************POPUP ANIMATE*******************/
+
+
+    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+        disableOn: 700,
+        type: 'iframe',
+        mainClass: 'mfp-fade',
+        removalDelay: 160,
+        preloader: false,
+
+        fixedContentPos: false
+    });
+
+
+    $('.popup-gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        tLoading: 'Loading image #%curr%...',
+        mainClass: 'mfp-img-mobile',
+        gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+        },
+        image: {
+            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+            titleSrc: function (item) {
+                return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
+            }
+        }
+    });
 })
