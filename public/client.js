@@ -98,6 +98,8 @@ $(function () {
 
         });
 
+        console.log(html);
+
         $(".youtube-search-result").prop('hidden', false);
         $("#search-results ul").html(html);
         $(".about-this-app").prop('hidden', true);
