@@ -32,9 +32,7 @@ body {
     visibility: hidden;
 }
 
-.section-title {
-
-}
+.section-title {}
 
 
 
@@ -43,10 +41,11 @@ body {
 
 .nav-bar {
     background-color: #ffffff;
+    z-index: 1000;
     position: fixed;
     color: #cc181e;
     width: 100%;
-    padding:1% 2%;
+    padding: 13px 20px;
     box-shadow: 0px 5px 5px 0px rgba(158, 158, 158, 1);
 }
 
@@ -119,32 +118,24 @@ body {
 
 /*--------------------------------Main Page----------------------------------------------*/
 
+.main-section {
+    clip: rect(0, auto, auto, 0);
+}
+
 .main-page {
     /*    display: table;*/
     text-align: center;
     padding-top: 200px;
     height: 100vh;
     width: 100%;
-    /*    position: relative;*/
+    position: relative;
     color: #000000;
     background: linear-gradient(rgba(0, 0, 0, 0.53), rgba(0, 0, 0, 0)), url(apple-blur-business-533463.jpg) no-repeat center center fixed;
     /*    background-color: #f8f8f8;*/
     background-size: cover;
     background-attachment: initial;
+    /*    clip: rect(0, auto, auto, 0);*/
 }
-
-/*
-.introduce {
-    display: inline-block;
-    width: 40%;
-    min-width: 600px;
-    background-color: rgba(255, 255, 255, 0.86);
-    margin: auto;
-    padding: 30px 70px;
-    border-radius: 30px;
-}
-*/
-
 
 
 .main-page h1 {
@@ -153,7 +144,7 @@ body {
 }
 
 .main-title {
-    font-size:40px;
+    font-size: 40px;
 }
 
 #tube {
@@ -166,13 +157,16 @@ body {
 
 .search-form {
     display: inline-block;
-    text-align: center;
     width: 40%;
     min-width: 600px;
     background-color: rgba(255, 255, 255, 0.86);
-    margin: auto;
     padding: 30px 70px 50px 70px;
     border-radius: 30px;
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #search-input {
@@ -182,17 +176,6 @@ body {
 
 
 
-
-
-/*-------------------------------------- Search results ---------------------------------------*/
-
-.individualResult {
-    margin-bottom: 20px;
-}
-
-.addVideoButton {
-    margin-bottom: 10px;
-}
 
 
 
@@ -239,6 +222,7 @@ body {
 
 .youtube-search-result {
     margin-top: 40px;
+    padding: 0;
 }
 
 .youtube-search-result h2 {
@@ -253,7 +237,7 @@ body {
     border: 1px #e2e2e2 solid;
     background-color: #fafafa;
     padding-top: 30px;
-    margin: 50px 20% 0 20%;
+    margin: 50px 40px 0 40px;
     border-radius: 5px;
     box-shadow: 4px 4px 5px 0px rgba(128, 128, 128, 1);
 }
@@ -278,7 +262,7 @@ body {
 }
 
 .buttonOptions {
-/*    display: inline-block;*/
+    /*    display: inline-block;*/
     text-align: center;
     margin: 30px 0;
 }
@@ -289,16 +273,28 @@ body {
 
 /*======================== Add & Edit Section ===============================*/
 
-
-
 .add-main {
-    padding-top: 150px;
+    position: relative;
+    padding-top: 130px;
     margin-bottom: 100px;
     text-align: center;
+    height: 100vh;
+    width: 100%;
 }
 
 .add-main h1 {
     margin-bottom: 50px;
+}
+
+.add-results {
+    position: absolute;
+    width: 100%;
+    padding: 50px 0;
+    /*
+    top: 43%;left: 50%;
+transform: translate(-50%, -50%);
+*/
+    background-color: #f7f7f7;
 }
 
 .add-video {
@@ -306,10 +302,12 @@ body {
     width: 100%;
     height: 0;
     border-radius: 10px;
-    padding-bottom: 56%; /* The height of the item will now be 56% of the width. */
+    padding-bottom: 56%;
+    /* The height of the item will now be 56% of the width. */
 }
 
 /* Adjust the iframe so it's rendered in the outer-width and outer-height of it's parent */
+
 .add-video iframe {
     position: absolute;
     width: 100%;
@@ -320,9 +318,17 @@ body {
 }
 
 .journal-textarea {
-    height: 100%;
+    height: 230px;
     width: 100%;
+    padding: 20px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
     box-shadow: 4px 4px 5px 0px rgba(128, 128, 128, 1);
+}
+
+.add-button {
+    margin-top: 40px;
 }
 
 
@@ -334,8 +340,7 @@ body {
 
 
 
-
-/*---------My List----------------*/
+/*---------------------------My List----------------------------*/
 
 .mylist-main {
     padding-top: 140px;
@@ -353,10 +358,16 @@ body {
 }
 
 
+.individualResult {
+    margin-bottom: 20px;
+}
+
+
+
 .mylist-video,
 .mylist-joutnal,
 .mylist-buttons {
-/*    height: 200px;*/
+    /*    height: 200px;*/
 }
 
 .mylist-video {
@@ -405,6 +416,7 @@ footer {
 
 
 /* Magnific Popup CSS */
+
 /*
 .mfp-bg {
     top: 0;
@@ -785,53 +797,53 @@ img.mfp-img {
 }
 
 @media screen and (max-width: 800px) and (orientation: landscape),
-    screen and (max-height: 300px) {
-        /**
+screen and (max-height: 300px) {
+    /**
         * Remove all paddings around the image on small screen
         */
-        .mfp-img-mobile .mfp-image-holder {
-            padding-left: 0;
-            padding-right: 0;
-        }
-        .mfp-img-mobile img.mfp-img {
-            padding: 0;
-        }
-        .mfp-img-mobile .mfp-figure:after {
-            top: 0;
-            bottom: 0;
-        }
-        .mfp-img-mobile .mfp-figure small {
-            display: inline;
-            margin-left: 5px;
-        }
-        .mfp-img-mobile .mfp-bottom-bar {
-            background: rgba(0, 0, 0, 0.6);
-            bottom: 0;
-            margin: 0;
-            top: auto;
-            padding: 3px 5px;
-            position: fixed;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-        .mfp-img-mobile .mfp-bottom-bar:empty {
-            padding: 0;
-        }
-        .mfp-img-mobile .mfp-counter {
-            right: 5px;
-            top: 3px;
-        }
-        .mfp-img-mobile .mfp-close {
-            top: 0;
-            right: 0;
-            width: 35px;
-            height: 35px;
-            line-height: 35px;
-            background: rgba(0, 0, 0, 0.6);
-            position: fixed;
-            text-align: center;
-            padding: 0;
-        }
+    .mfp-img-mobile .mfp-image-holder {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .mfp-img-mobile img.mfp-img {
+        padding: 0;
+    }
+    .mfp-img-mobile .mfp-figure:after {
+        top: 0;
+        bottom: 0;
+    }
+    .mfp-img-mobile .mfp-figure small {
+        display: inline;
+        margin-left: 5px;
+    }
+    .mfp-img-mobile .mfp-bottom-bar {
+        background: rgba(0, 0, 0, 0.6);
+        bottom: 0;
+        margin: 0;
+        top: auto;
+        padding: 3px 5px;
+        position: fixed;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .mfp-img-mobile .mfp-bottom-bar:empty {
+        padding: 0;
+    }
+    .mfp-img-mobile .mfp-counter {
+        right: 5px;
+        top: 3px;
+    }
+    .mfp-img-mobile .mfp-close {
+        top: 0;
+        right: 0;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        background: rgba(0, 0, 0, 0.6);
+        position: fixed;
+        text-align: center;
+        padding: 0;
+    }
 }
 
 @media all and (max-width: 900px) {

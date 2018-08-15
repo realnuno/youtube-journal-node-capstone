@@ -15,9 +15,9 @@ $(function () {
 
         event.preventDefault();
         event.stopPropagation();
-//        $('html').animate({
-//            scrollTop: 1250
-//        }, 'fast');
+        //        $('html').animate({
+        //            scrollTop: 1250
+        //        }, 'fast');
 
 
 
@@ -30,7 +30,7 @@ $(function () {
         const queryTarget = $(event.currentTarget).find("#search-input");
         query = queryTarget.val();
 
-//        queryTarget.val("");
+        //        queryTarget.val("");
 
         getResults(query, displayYoutubeData);
 
@@ -118,8 +118,8 @@ $(function () {
     </div>
 </li>
 `
-//        const videoUrl = `https://www.youtube.com/watch?v=${resultInput.id.videoId}`;
-//        $(".popup-youtube").prop('hidden', false).attr("href", videoUrl);
+        //        const videoUrl = `https://www.youtube.com/watch?v=${resultInput.id.videoId}`;
+        //        $(".popup-youtube").prop('hidden', false).attr("href", videoUrl);
     };
 
 
@@ -201,7 +201,7 @@ $(function () {
 
                 let mylist = {
                     videoTitle: pickedVideo.snippet.title,
-                    journal: $(".journal-textera").val(),
+                    journal: $(".journal-textarea").val(),
                     video_url: pickedVideo.id.videoId
                 };
 
@@ -283,7 +283,7 @@ $(function () {
                         </div>
                         <div class="col-6">
                         <div class=" add-joutnal">
-                        <textarea rows="4" cols="50" class="journal-textera"></textarea>
+                        <textarea rows="4" cols="50" class="journal-textarea"></textarea>
                         </div>
                         </div>
                         </div>
@@ -315,7 +315,7 @@ $(function () {
 
                         let mylist = {
                             videoTitle: pickedVideo.snippet.title,
-                            journal: $(".journal-textera").val(),
+                            journal: $(".journal-textarea").val(),
                             video_url: pickedVideo.id.videoId
                         };
 
@@ -723,7 +723,7 @@ $(function () {
             </div>
             <div class="col-6">
             <div class=" add-joutnal">
-            <textarea rows="4" cols="50" class="journal-textera"></textarea>
+            <textarea rows="4" cols="50" class="journal-textarea"></textarea>
             </div>
             </div>
             </div>
@@ -738,7 +738,7 @@ $(function () {
 
 
         $(".add-results").html(editVideo);
-        $(".journal-textera").val(editJournal.journal);
+        $(".journal-textarea").val(editJournal.journal);
 
 
 
@@ -751,7 +751,7 @@ $(function () {
 
 
             let editedMylist = {
-                journal: $(".journal-textera").val(),
+                journal: $(".journal-textarea").val(),
                 id: editJournal.id
             };
 
@@ -838,36 +838,36 @@ $(function () {
     });
 
 
-//
-//    /****************POPUP ANIMATE*******************/
-//
-//
-//    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-//        disableOn: 700,
-//        type: 'iframe',
-//        mainClass: 'mfp-fade',
-//        removalDelay: 160,
-//        preloader: false,
-//
-//        fixedContentPos: false
-//    });
-//
-//
-//    $('.popup-gallery').magnificPopup({
-//        delegate: 'a',
-//        type: 'image',
-//        tLoading: 'Loading image #%curr%...',
-//        mainClass: 'mfp-img-mobile',
-//        gallery: {
-//            enabled: true,
-//            navigateByImgClick: true,
-//            preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
-//        },
-//        image: {
-//            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-//            titleSrc: function (item) {
-//                return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
-//            }
-//        }
-//    });
+    //
+    //    /****************POPUP ANIMATE*******************/
+    //
+    //
+    //    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+    //        disableOn: 700,
+    //        type: 'iframe',
+    //        mainClass: 'mfp-fade',
+    //        removalDelay: 160,
+    //        preloader: false,
+    //
+    //        fixedContentPos: false
+    //    });
+    //
+    //
+    //    $('.popup-gallery').magnificPopup({
+    //        delegate: 'a',
+    //        type: 'image',
+    //        tLoading: 'Loading image #%curr%...',
+    //        mainClass: 'mfp-img-mobile',
+    //        gallery: {
+    //            enabled: true,
+    //            navigateByImgClick: true,
+    //            preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+    //        },
+    //        image: {
+    //            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+    //            titleSrc: function (item) {
+    //                return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
+    //            }
+    //        }
+    //    });
 })
