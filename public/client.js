@@ -86,15 +86,11 @@ $(function () {
 
         videoInfo = data.items;
 
-        console.log(videoInfo);
-
         nextPage = data.nextPageToken;
         prevPage = data.prevPageToken;
 
 
         data.items.forEach(function (item, index) {
-
-            console.log(item.id.videoId);
 
 
             const videoUrl = `https://www.youtube.com/watch?v=${item.id.videoId}`;
@@ -102,7 +98,7 @@ $(function () {
             $(`.video-result${index} img`).prop("src", item.snippet.thumbnails.medium.url);
             $(`.video-result${index} img`).prop("alt", item.snippet.title);
             $(`.video-result${index} p`).text(item.snippet.title);
-            $(`.video-result${index} button`).prop("index-number", index);
+            $(`.video-result${index} button`).attr("data-index", index);
             $(`.video-result${index} a`).prop('hidden', false).attr("href", videoUrl);
 
         });
@@ -139,9 +135,8 @@ $(function () {
 
         const authToken = localStorage.getItem("token");
 
-        console.log($(this).attr("data-index"))
 
-        //        pickedVideo = videoInfo[$(this).attr("data-index")];
+        pickedVideo = videoInfo[$(this).attr("data-index")];
 
         localStorage.setItem('storedVideo', JSON.stringify(pickedVideo));
 
