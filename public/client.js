@@ -176,7 +176,7 @@ $(function () {
                 </div>
                 <div class="col-6">
                     <div class=" add-joutnal">
-                        <textarea rows="4" cols="50" class="journal-textera"></textarea>
+                        <textarea rows="4" cols="50" class="journal-textarea"></textarea>
                     </div>
                 </div>
             </div>
