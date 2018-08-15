@@ -153,7 +153,7 @@ $(function () {
             console.log(pickedVideo);
 
             const embeddedVideo = `
-            <div class="row">
+            <div class="row embeddedVideo">
                 <div class="col-6">
                     <div class="add-video">
                         <iframe class="ytplayer" type="text/html"
@@ -260,27 +260,27 @@ $(function () {
                     addPage();
 
                     const embeddedVideo = `
+                        <div class="row embeddedVideo">
+                            <div class="col-6">
+                                <div class="add-video">
+                                    <iframe class="ytplayer" type="text/html"
+                                    src="https://www.youtube.com/embed/${addedVideo.id.videoId}"
+                                    frameborder="0" allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class=" add-joutnal">
+                                    <textarea rows="4" cols="50" class="journal-textarea"></textarea>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
-                        <div class="col-6">
-                        <div class="add-video">
-                        <iframe id="ytplayer" type="text/html"
-                        src="https://www.youtube.com/embed/${addedVideo.id.videoId}"
-                        frameborder="0" allowfullscreen>
-                        </iframe>
-                        </div>
-                        </div>
-                        <div class="col-6">
-                        <div class=" add-joutnal">
-                        <textarea rows="4" cols="50" class="journal-textarea"></textarea>
-                        </div>
-                        </div>
-                        </div>
-                        <div class="row">
-                        <div class="col-12">
-                        <div class="col-12 add-button">
-                        <button class="button save-button">save</button>
-                        </div>
-                        </div>
+                            <div class="col-12">
+                                <div class="col-12 add-button">
+                                    <button class="button save-button">save</button>
+                                </div>
+                            </div>
                         </div>
                         `
 
@@ -627,17 +627,23 @@ $(function () {
 
             return `
             <li>
-                <div class="row individualResult">
-                    <div class="col-4 mylist-video">
+                <div class="row mylistRow">
+                    <div class="col-4">
+                        <div class="individualResult">
                         <iframe class="ytplayer" type="text/html"
                         src="https://www.youtube.com/embed/${resultInput.video_url}"
                         frameborder="0" allowfullscreen>
                         </iframe>
                         <p>${resultInput.videoTitle}</p>
+                        </div>
                     </div>
-                    <div class="col-4 mylist-joutnal">
-                        <p>${resultInput.creationDate}</p>
-                        <p>${resultInput.journal}</p>
+                    <div class="col-4">
+                        <div class="individualResult">
+                            <div class="mylist-joutnal">
+                                <p>${resultInput.creationDate}</p>
+                                <p>${resultInput.journal}</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-4 mylist-buttons">
                         <button class="button edit-button" video-index="${index}">edit</button>
