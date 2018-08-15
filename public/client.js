@@ -88,14 +88,14 @@ $(function () {
 
         nextPage = data.nextPageToken;
         prevPage = data.prevPageToken;
-
+        console.log(videoInfo);
 
         data.items.forEach(function (item, index) {
 
 
             const videoUrl = `https://www.youtube.com/watch?v=${item.id.videoId}`;
 
-            $(`.video-result${index} img`).prop("src", item.snippet.thumbnails.medium.url);
+            $(`.video-result${index} img`).prop("src", item.snippet.thumbnails.high.url);
             $(`.video-result${index} img`).prop("alt", item.snippet.title);
             $(`.video-result${index} p`).text(item.snippet.title);
             $(`.video-result${index} button`).attr("data-index", index);
