@@ -15,16 +15,22 @@ $(function () {
 
         event.preventDefault();
         event.stopPropagation();
-        $('html').animate({
-            scrollTop: 1250
-        }, 'fast');
+//        $('html').animate({
+//            scrollTop: 1250
+//        }, 'fast');
+
+
 
         $('.youtube-search-result').show();
+
+        $('html, body').animate({
+            scrollTop: $('.youtube-search-result').offset().top
+        }, 1000);
 
         const queryTarget = $(event.currentTarget).find("#search-input");
         query = queryTarget.val();
 
-        queryTarget.val("");
+//        queryTarget.val("");
 
         getResults(query, displayYoutubeData);
 
@@ -36,9 +42,9 @@ $(function () {
 
     $(".tokenClass").click(function (event) {
 
-        $('html').animate({
-            scrollTop: 1250
-        }, 'fast');
+        $('html, body').animate({
+            scrollTop: $('.youtube-search-result').offset().top
+        }, 1000);
 
         if ($(event.currentTarget).val() == "Next") {
             pageTokenCurrent = nextPage;
@@ -99,22 +105,21 @@ $(function () {
 
 
 
+
     function renderResult(resultInput, index) {
 
         return `
 <li>
     <div class="video-result" >
-        <a class="popup-youtube" href = "" >
+        <a class="popup-youtube" href = "https://www.youtube.com/watch?v=${resultInput.id.videoId}" >
         <img src = "${resultInput.snippet.thumbnails.medium.url}" alt="${resultInput.snippet.title}"></a>
         <p>${resultInput.snippet.title}</p>
         <button type="submit" class="button addVideoButton" data-index="${index}">add</button>
     </div>
 </li>
 `
-        const videoUrl = `https://www.youtube.com/watch?v=${resultInput.id.videoId}`;
-
-        $(".popup-youtube").prop('hidden', false).attr("href", videoUrl);
-
+//        const videoUrl = `https://www.youtube.com/watch?v=${resultInput.id.videoId}`;
+//        $(".popup-youtube").prop('hidden', false).attr("href", videoUrl);
     };
 
 
@@ -123,8 +128,13 @@ $(function () {
 
 
 
-
     //============== Pick video ============
+
+
+
+
+
+
 
     let pickedVideo;
 
@@ -828,36 +838,36 @@ $(function () {
     });
 
 
-
-    /****************POPUP ANIMATE*******************/
-
-
-    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-        disableOn: 700,
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        removalDelay: 160,
-        preloader: false,
-
-        fixedContentPos: false
-    });
-
-
-    $('.popup-gallery').magnificPopup({
-        delegate: 'a',
-        type: 'image',
-        tLoading: 'Loading image #%curr%...',
-        mainClass: 'mfp-img-mobile',
-        gallery: {
-            enabled: true,
-            navigateByImgClick: true,
-            preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
-        },
-        image: {
-            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-            titleSrc: function (item) {
-                return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
-            }
-        }
-    });
+//
+//    /****************POPUP ANIMATE*******************/
+//
+//
+//    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+//        disableOn: 700,
+//        type: 'iframe',
+//        mainClass: 'mfp-fade',
+//        removalDelay: 160,
+//        preloader: false,
+//
+//        fixedContentPos: false
+//    });
+//
+//
+//    $('.popup-gallery').magnificPopup({
+//        delegate: 'a',
+//        type: 'image',
+//        tLoading: 'Loading image #%curr%...',
+//        mainClass: 'mfp-img-mobile',
+//        gallery: {
+//            enabled: true,
+//            navigateByImgClick: true,
+//            preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+//        },
+//        image: {
+//            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+//            titleSrc: function (item) {
+//                return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
+//            }
+//        }
+//    });
 })
