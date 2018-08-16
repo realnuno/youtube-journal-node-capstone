@@ -363,6 +363,14 @@ body {
     padding: 30px 0;
 }
 
+
+.mylist-results li {
+    list-style: none;
+    margin-bottom: 70px;
+}
+
+
+
 .mylistRow {
     max-width: 1800px;
 }
@@ -387,8 +395,13 @@ body {
     box-shadow: 4px 4px 5px 0px rgba(128, 128, 128, 1);
 }
 
+.individualJournal {
+    padding: 0;
+    margin-bottom: 40px;
+}
+
 .mylist-joutnal {
-    position: absolute;
+/*    position: absolute;*/
     width: 100%;
     height: auto;
     left: 0;
@@ -403,16 +416,9 @@ body {
 }
 
 .mylist-buttons {
-    border: 1px black solid;
-    padding-top: 70px;
-
+    margin-top: 80px;
+    top: 50%;
 }
-
-.mylist-results li {
-    list-style: none;
-    margin-bottom: 40px;
-}
-
 
 
 
