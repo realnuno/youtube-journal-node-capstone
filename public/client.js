@@ -628,7 +628,7 @@ $(function () {
             return `
             <li>
                 <div class="row mylistRow">
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="individualResult">
                         <iframe class="ytplayer" type="text/html"
                         src="https://www.youtube.com/embed/${resultInput.video_url}"
@@ -637,15 +637,16 @@ $(function () {
                         <p>${resultInput.videoTitle}</p>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="individualJournal">
                             <div class="mylist-joutnal">
                                 <p>${resultInput.creationDate}</p>
                                 <p>${resultInput.journal}</p>
                             </div>
                         </div>
+
                     </div>
-                    <div class="col-4 mylist-buttons">
+                    <div class="col-12 mylist-buttons">
                         <button class="button edit-button" video-index="${index}">edit</button>
                         <button class="button delete-button" video-index="${index}">delete</button>
                     </div>
