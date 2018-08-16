@@ -638,7 +638,7 @@ $(function () {
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="individualResult">
+                        <div class="individualJournal">
                             <div class="mylist-joutnal">
                                 <p>${resultInput.creationDate}</p>
                                 <p>${resultInput.journal}</p>

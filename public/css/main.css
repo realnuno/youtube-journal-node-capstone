@@ -387,8 +387,20 @@ body {
     box-shadow: 4px 4px 5px 0px rgba(128, 128, 128, 1);
 }
 
+.individualJournal {
+    /*
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    padding-bottom: 56%;
+    margin-bottom: 20px;
+    max-width: 1800px;
+*/
+}
+
 .mylist-joutnal {
-    position: absolute;
+    /*    position: absolute;*/
     width: 100%;
     height: auto;
     left: 0;
