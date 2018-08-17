@@ -96,38 +96,41 @@ router.get("/:id", (req, res) => {
         });
 });
 
-router.post("/add-video", jwtAuth, jsonParser, (req, res) => {
-
-    //change to actual fields//
-    const requiredFields = [
-        "videoTitle",
-        "journal",
-        "video_url"
-    ];
-    for (let i = 0; i < requiredFields.length; i++) {
-        const field = requiredFields[i];
-        if (!(field in req.body)) {
-            const message = `Missing \`${field}\` in request body`;
-            console.error(message);
-            return res.status(400).send(message);
-        }
-    }
-    Mylist.create({
-            videoTitle: req.body.videoTitle,
-            journal: req.body.journal,
-            video_url: req.body.video_url,
-            user: req.user.id
-        })
-        .then(
-            mylist => res.status(201).json(mylist.serialize())
-        )
-        .catch(err => {
-            console.error(err);
-            res.status(500).json({
-                error: "Something went wrong"
-            });
-        });
-});
+//router.post("/add-video", jwtAuth, jsonParser, (req, res) => {
+//
+//    //change to actual fields//
+//    const requiredFields = [
+//        "videoTitle",
+//        "journal",
+//        "video_url"
+//    ];
+//    for (let i = 0; i < requiredFields.length; i++) {
+//        const field = requiredFields[i];
+//        if (!(field in req.body)) {
+//            const message = `Missing \`${field}\` in request body`;
+//            console.error(message);
+//            return res.status(400).send(message);
+//        }
+//    }
+//
+//
+//
+//    Mylist.create({
+//            videoTitle: req.body.videoTitle,
+//            journal: req.body.journal,
+//            video_url: req.body.video_url,
+//            user: req.user.id
+//        })
+//        .then(
+//            mylist => res.status(201).json(mylist.serialize())
+//        )
+//        .catch(err => {
+//            console.error(err);
+//            res.status(500).json({
+//                error: "Something went wrong"
+//            });
+//        });
+//});
 
 
 router.post("/add-video/test", jsonParser, (req, res) => {
@@ -146,21 +149,37 @@ router.post("/add-video/test", jsonParser, (req, res) => {
             return res.status(400).send(message);
         }
     }
+
+
+
     Mylist.create({
-            videoTitle: req.body.videoTitle,
-            journal: req.body.journal,
-            video_url: req.body.video_url
-        })
+        videoTitle: req.body.videoTitle,
+        journal: req.body.journal,
+        video_url: req.body.video_url,
+        user: req.user.id
+    })
         .then(
-            mylist => res.status(201).json(mylist.serialize())
-        )
+        mylist => res.status(201).json(mylist.serialize())
+    )
         .catch(err => {
-            console.error(err);
-            res.status(500).json({
-                error: "Something went wrong"
-            });
+        console.error(err);
+        res.status(500).json({
+            error: "Something went wrong"
         });
+    });
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -205,6 +224,47 @@ router.put("/edit-journal/:id", jwtAuth, jsonParser, (req, res) => {
         }));
 });
 
+
+
+router.put("/edit-journal/test/:id", jsonParser, (req, res) => {
+
+
+    if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+        res.status(400).json({
+            error: "Request path id and request body id values must match"
+        });
+    }
+
+    const updated = {};
+    //change to actual fields//
+    const updateableFields = [
+        "journal",
+        "id"
+    ];
+    updateableFields.forEach(field => {
+        if (field in req.body) {
+            updated[field] = req.body[field];
+        }
+    });
+
+
+    Mylist.findByIdAndUpdate(
+            req.params.id, {
+                $set: updated
+            }, {
+                new: true
+            }
+        )
+        .then(updatedMylist => res.json(updatedMylist))
+        .catch(err => res.status(500).json({
+            message: "Something went wrong"
+        }));
+});
+
+
+
+
+
 router.delete('/:id', jwtAuth, function (req, res) {
     Mylist.findByIdAndRemove(req.params.id).then(function (entry) {
         return res.status(204).end();
@@ -214,6 +274,19 @@ router.delete('/:id', jwtAuth, function (req, res) {
         });
     });
 });
+
+
+router.delete('/test/:id', function (req, res) {
+    Mylist.findByIdAndRemove(req.params.id).then(function (entry) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
+
+
 
 
 module.exports = {
