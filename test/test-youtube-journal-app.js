@@ -77,7 +77,7 @@ describe('youtube journal API resource', function () {
     afterEach(function () {
         // tear down database so we ensure no state from this test
         // effects any coming after.
-        //        return tearDownDb();
+                return tearDownDb();
     });
 
     after(function () {
@@ -88,7 +88,6 @@ describe('youtube journal API resource', function () {
     // this allows us to make clearer, more discrete tests that focus
     // on proving something small
     describe('GET endpoint', function () {
-
         it('should return all existing data', function () {
             // strategy:
             //    1. get back all posts returned by by GET request to `/api/mylist`
@@ -109,11 +108,6 @@ describe('youtube journal API resource', function () {
 
                     return Mylist.count();
                 })
-            //                .then(count => {
-            //                    // the number of returned posts should be same
-            //                    // as number of posts in DB
-            //                    res.body.should.have.lengthOf(count);
-            //                });
         });
 
         it('should return posts with right fields', function () {
@@ -144,6 +138,9 @@ describe('youtube journal API resource', function () {
             //                });
         });
     });
+
+
+
     describe('POST endpoint', function () {
         // strategy: make a POST request with data,
         // then prove that the post we get back has
@@ -172,8 +169,21 @@ describe('youtube journal API resource', function () {
                     expect(res.body.videoTitle).to.equal(newPost.videoTitle);
                     expect(res.body.journal).to.equal(newPost.journal);
                     expect(res.body.video_url).to.equal(newPost.video_url);
-                })
+                });
         });
+
+        it("should error if POST missing expected values", function() {
+            const badRequestData = {};
+            return chai
+                .request(app)
+                .post("/api/mylist/add-video/test")
+                .send(badRequestData)
+                .then(function(res) {
+//                expect(res).to.have.status(400);
+                console.log(res);
+            });
+        });
+
     });
     //
     //    describe('PUT endpoint', function () {
