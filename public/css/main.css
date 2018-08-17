@@ -95,6 +95,7 @@ ion-icon {
 }
 
 
+
 /*----------------------------------------- Buttons ------------------------------------------------------*/
 
 .button {
@@ -230,7 +231,7 @@ ion-icon {
 
 .youtube-search-result {
     margin-top: 40px;
-    padding: 0;
+    padding: 130px;
 }
 
 .youtube-search-result h2 {
@@ -450,7 +451,35 @@ footer {
 
 
 
+/*========================= Sign up ===============================*/
 
+
+#name-input,
+#email-input,
+#password-input,
+#login-email-input,
+#login-password-input {
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    width: 35%;
+    min-width: 400px;
+    margin: 10px auto;
+    height: 45px;
+    padding-left: 15px;
+    border-radius: 5px;
+}
+
+.signup-form,
+.login-form {
+    margin-top: 40px;
+}
+
+.signup-button,
+.login-button {
+    margin-top: 20px;
+}
 
 
 
@@ -501,7 +530,10 @@ footer {
         display: none;
     }
 
-
+    .youtube-search-result {
+        margin-top: 20px;
+        padding: 50px;
+    }
 
 
 }
@@ -519,6 +551,10 @@ footer {
         min-width: 0;
         width: 80%;
         padding: 10px 30px 20px 30px;
+    }
+
+    .youtube-search-result {
+        padding: 0;
     }
 }
 
