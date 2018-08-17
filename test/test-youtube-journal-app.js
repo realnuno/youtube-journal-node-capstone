@@ -169,7 +169,7 @@ describe('youtube journal API resource', function () {
                     expect(res.body.videoTitle).to.equal(newPost.videoTitle);
                     expect(res.body.journal).to.equal(newPost.journal);
                     expect(res.body.video_url).to.equal(newPost.video_url);
-                });
+                })
         });
 
         it("should error if POST missing expected values", function() {
@@ -180,7 +180,7 @@ describe('youtube journal API resource', function () {
                 .send(badRequestData)
                 .then(function(res) {
 //                expect(res).to.have.status(400);
-                console.log(res);
+                console.log(res)
             });
         });
 
