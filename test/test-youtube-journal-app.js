@@ -45,7 +45,6 @@ describe('youtube journal API resource', function () {
     // this allows us to make clearer, more discrete tests that focus
     // on proving something small
     describe('GET endpoint', function () {
-
         it('should return all existing data', function () {
             // strategy:
             //    1. get back all posts returned by by GET request to `/api/mylist`
@@ -87,54 +86,48 @@ describe('youtube journal API resource', function () {
     });
 
 
+        describe('POST endpoint', function () {
+            // strategy: make a POST request with data,
+            // then prove that the post we get back has
+            // right keys, and that `id` is there (which means
+            // the data was inserted into db)
+            it('should add a new blog post', function () {
 
+                const newPost = {
+                    videoTitle: "Lorem ip some",
+                    journal: "foo foo foo foo",
+                    video_url: "Emma Goldman"
+                };
 
+                const expectedKeys = ["id", "creationDate"].concat(Object.keys(newPost));
 
+                return chai
+                    .request(app)
+                    .post('/api/mylist/add-video/test')
+                    .send(newPost)
+                    .then(function (res) {
+                        console.log("real");
+                        expect(res).to.have.status(201);
+                        expect(res).to.be.json;
+                        expect(res.body).to.be.a("object");
+                        expect(res.body).to.have.all.keys(expectedKeys);
+                        expect(res.body.videoTitle).to.equal(newPost.videoTitle);
+                        expect(res.body.journal).to.equal(newPost.journal);
+                        expect(res.body.video_url).to.equal(newPost.video_url);
+                    })
+            });
 
-
-
-    describe('POST endpoint', function () {
-        // strategy: make a POST request with data,
-        // then prove that the post we get back has
-        // right keys, and that `id` is there (which means
-        // the data was inserted into db)
-        it('should add a new blog post', function () {
-
-            const newPost = {
-                videoTitle: "Lorem ip some",
-                journal: "foo foo foo foo",
-                video_url: "Emma Goldman"
-            };
-
-            const expectedKeys = ["id", "creationDate"].concat(Object.keys(newPost));
-
-            return chai
-                .request(app)
-                .post('/api/mylist/add-video/test')
-                .send(newPost)
-                .then(function (res) {
-                    console.log("real");
-                    expect(res).to.have.status(201);
-                    expect(res).to.be.json;
-                    expect(res.body).to.be.a("object");
-                    expect(res.body).to.have.all.keys(expectedKeys);
-                    expect(res.body.videoTitle).to.equal(newPost.videoTitle);
-                    expect(res.body.journal).to.equal(newPost.journal);
-                    expect(res.body.video_url).to.equal(newPost.video_url);
-                })
+            it("should error if POST missing expected values", function () {
+                const badRequestData = {};
+                return chai
+                    .request(app)
+                    .post("/api/mylist/add-video/test")
+                    .send(badRequestData)
+                    .then(function (res) {
+                        expect(res).to.have.status(400);
+                    });
+            });
         });
-
-        it("should error if POST missing expected values", function () {
-            const badRequestData = {};
-            return chai
-                .request(app)
-                .post("/api/mylist/add-video/test")
-                .send(badRequestData)
-                .then(function (res) {
-                    expect(res).to.have.status(400);
-                });
-        });
-    });
 
 
 
@@ -188,5 +181,6 @@ describe('youtube journal API resource', function () {
                 })
             );
         });
+
     });
 });
