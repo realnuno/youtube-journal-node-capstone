@@ -96,44 +96,7 @@ router.get("/:id", (req, res) => {
         });
 });
 
-//router.post("/add-video", jwtAuth, jsonParser, (req, res) => {
-//
-//    //change to actual fields//
-//    const requiredFields = [
-//        "videoTitle",
-//        "journal",
-//        "video_url"
-//    ];
-//    for (let i = 0; i < requiredFields.length; i++) {
-//        const field = requiredFields[i];
-//        if (!(field in req.body)) {
-//            const message = `Missing \`${field}\` in request body`;
-//            console.error(message);
-//            return res.status(400).send(message);
-//        }
-//    }
-//
-//
-//
-//    Mylist.create({
-//            videoTitle: req.body.videoTitle,
-//            journal: req.body.journal,
-//            video_url: req.body.video_url,
-//            user: req.user.id
-//        })
-//        .then(
-//            mylist => res.status(201).json(mylist.serialize())
-//        )
-//        .catch(err => {
-//            console.error(err);
-//            res.status(500).json({
-//                error: "Something went wrong"
-//            });
-//        });
-//});
-
-
-router.post("/add-video/test", jsonParser, (req, res) => {
+router.post("/add-video", jwtAuth, jsonParser, (req, res) => {
 
     //change to actual fields//
     const requiredFields = [
@@ -153,33 +116,55 @@ router.post("/add-video/test", jsonParser, (req, res) => {
 
 
     Mylist.create({
-        videoTitle: req.body.videoTitle,
-        journal: req.body.journal,
-        video_url: req.body.video_url,
-        user: req.user.id
-    })
+            videoTitle: req.body.videoTitle,
+            journal: req.body.journal,
+            video_url: req.body.video_url,
+            user: req.user.id
+        })
         .then(
-        mylist => res.status(201).json(mylist.serialize())
-    )
+            mylist => res.status(201).json(mylist.serialize())
+        )
         .catch(err => {
-        console.error(err);
-        res.status(500).json({
-            error: "Something went wrong"
+            console.error(err);
+            res.status(500).json({
+                error: "Something went wrong"
+            });
         });
-    });
 });
 
 
+router.post("/add-video/test/", jsonParser, (req, res) => {
 
+    //change to actual fields//
+    const requiredFields = [
+        "videoTitle",
+        "journal",
+        "video_url"
+    ];
+    for (let i = 0; i < requiredFields.length; i++) {
+        const field = requiredFields[i];
+        if (!(field in req.body)) {
+            const message = `Missing \`${field}\` in request body`;
+            console.error(message);
+            return res.status(400).send(message);
+        }
+    }
 
-
-
-
-
-
-
-
-
+    const item = Mylist.create({
+            videoTitle: req.body.videoTitle,
+            journal: req.body.journal,
+            video_url: req.body.video_url
+        })
+        .then(
+            mylist => res.status(201).json(mylist.serialize())
+        )
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({
+                error: "Something went wrong"
+            });
+        });
+});
 
 
 

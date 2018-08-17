@@ -34,6 +34,10 @@ body {
 
 .section-title {}
 
+ion-icon {
+    display: none;
+}
+
 
 
 
@@ -130,7 +134,7 @@ body {
     width: 100%;
     position: relative;
     color: #000000;
-    background: linear-gradient(rgba(0, 0, 0, 0.53), rgba(0, 0, 0, 0)), url(apple-blur-business-533463.jpg) no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.24)), url(apple-blur-business-533463.jpg) no-repeat center center fixed;
     /*    background-color: #f8f8f8;*/
     background-size: cover;
     background-attachment: initial;
@@ -201,11 +205,15 @@ body {
 /*------------------------------------------- Footer ---------------------------------------------*/
 
 .about-this-app {
+    max-width: 2000px;
     margin-top: 120px;
     margin-bottom: 120px;
     text-align: center;
 }
 
+.about {
+    margin-top: 30px;
+}
 
 .about-this-app i {
     font-size: 50px;
@@ -417,8 +425,16 @@ body {
 }
 
 .mylist-buttons {
+    /*    text-align: center;*/
     margin-top: 20px;
     top: 50%;
+}
+
+.divideLine {
+    margin-top: 40px;
+    width: 400px;
+    border-top: 2px solid #cc181e;
+    display: inline-block;
 }
 
 
@@ -430,6 +446,93 @@ footer {
     padding-top: 50px;
     text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=========================Media Query==========================*/
+
+@media only screen and (max-width: 840px) {
+    body {
+        font-size: 18px;
+    }
+
+    ion-icon {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /*
+    .icon-inner {
+        display: inline-block;
+    }
+*/
+    .video-search {
+        display: none;
+    }
+
+    .search-form {
+        min-width: 0;
+        width: 80%;
+        padding: 10px 30px 20px 30px;
+    }
+
+    .main-nav li {
+        margin-right: 5px;
+    }
+
+    .button {
+        padding: 5px 3px;
+    }
+
+
+    #nav-logout-button1,
+    #nav-logout-button2,
+    #nav-logout-button3 {
+        display: none;
+    }
+
+
+
+
+}
+
+@media only screen and (max-width: 640px) {
+
+    .main-title {
+        font-size: 30px;
+    }
+    #search-input {
+        min-width: 0;
+        width: 100%;
+    }
+    .search-form {
+        min-width: 0;
+        width: 80%;
+        padding: 10px 30px 20px 30px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
