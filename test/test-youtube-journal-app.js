@@ -102,18 +102,12 @@ describe('youtube journal API resource', function () {
                     res = _res;
                     expect(res).to.have.status(200);
                     // otherwise our db seeding didn't work
-                    console.log(res.body)
                     expect(res).to.be.json;
                     expect(res.body).to.be.a("array");
                     expect(res.body.length).to.be.above(0);
 
                     return Mylist.count();
-                })
-            //                .then(count => {
-            //                    // the number of returned posts should be same
-            //                    // as number of posts in DB
-            //                    res.body.should.have.lengthOf(count);
-            //                });
+                });
         });
 
         it('should return posts with right fields', function () {
@@ -123,11 +117,6 @@ describe('youtube journal API resource', function () {
             return chai.request(app)
                 .get('/api/mylist/test')
                 .then(function (res) {
-
-                    //                    res.should.have.status(200);//                    res.should.be.json;
-                    //                    res.body.should.be.a('array');
-                    //                    res.body.should.have.lengthOf.at.least(1);
-
                     res.body.forEach(function (post) {
                         expect(post).to.be.a("object");
                         expect(post).to.have.all.keys('id', 'videoTitle', 'journal', 'video_url', 'creationDate');
@@ -137,13 +126,16 @@ describe('youtube journal API resource', function () {
                     resPost = res.body[0];
                     return Mylist.findById(resPost.id);
                 })
-            //                .then(post => {
-            //                    resPost.videoTitle.should.equal(post.videoTitle);
-            //                    resPost.journal.should.equal(post.journal);
-            //                    resPost.video_url.should.equal(post.video_url);
-            //                });
         });
     });
+
+
+
+
+
+
+
+
     describe('POST endpoint', function () {
         // strategy: make a POST request with data,
         // then prove that the post we get back has
@@ -161,86 +153,82 @@ describe('youtube journal API resource', function () {
 
             return chai
                 .request(app)
-                .post('/api/mylist/add-video/test')
+                .post('/api/mylist/add-video')
                 .send(newPost)
                 .then(function (res) {
-                    console.log(res)
-                    expect(res).to.have.status(201);
-                    expect(res).to.be.json;
-                    expect(res.body).to.be.a("object");
-                    expect(res.body).to.have.all.keys(expectedKeys);
-                    expect(res.body.videoTitle).to.equal(newPost.videoTitle);
-                    expect(res.body.journal).to.equal(newPost.journal);
-                    expect(res.body.video_url).to.equal(newPost.video_url);
+                    //                    expect(res).to.have.status(201);
+                    //                    expect(res).to.be.json;
+                    //                    expect(res.body).to.be.a("object");
+                    //                    expect(res.body).to.have.all.keys(expectedKeys);
+                    //                    expect(res.body.videoTitle).to.equal(newPost.videoTitle);
+                    //                    expect(res.body.journal).to.equal(newPost.journal);
+                    //                    expect(res.body.video_url).to.equal(newPost.video_url);
                 })
         });
+
+        //            it("should error if POST missing expected values", function () {
+        //                const badRequestData = {};
+        //                return chai
+        //                    .request(app)
+        //                    .post("/api/mylist/add-video/test")
+        //                    .send(badRequestData)
+        //                    .then(function (res) {
+        //                        expect(res).to.have.status(400);
+        //                    });
+        //            });
     });
-    //
-    //    describe('PUT endpoint', function () {
-    //
-    //        // strategy:
-    //        //  1. Get an existing post from db
-    //        //  2. Make a PUT request to update that post
-    //        //  4. Prove post in db is correctly updated
-    //        it('should update fields you send over', function () {
-    //            const updateData = {
-    //                title: 'cats cats cats',
-    //                content: 'dogs dogs dogs',
-    //                author: {
-    //                    firstName: 'foo',
-    //                    lastName: 'bar'
-    //                }
-    //            };
-    //
-    //            return BlogPost
-    //                .findOne()
-    //                .then(post => {
-    //                updateData.id = post.id;
-    //
-    //                return chai.request(app)
-    //                    .put(`/posts/${post.id}`)
-    //                    .send(updateData);
-    //            })
-    //                .then(res => {
-    //                res.should.have.status(204);
-    //                return BlogPost.findById(updateData.id);
-    //            })
-    //                .then(post => {
-    //                post.title.should.equal(updateData.title);
-    //                post.content.should.equal(updateData.content);
-    //                post.author.firstName.should.equal(updateData.author.firstName);
-    //                post.author.lastName.should.equal(updateData.author.lastName);
-    //            });
-    //        });
-    //    });
-    //
-    //    describe('DELETE endpoint', function () {
-    //        // strategy:
-    //        //  1. get a post
-    //        //  2. make a DELETE request for that post's id
-    //        //  3. assert that response has right status code
-    //        //  4. prove that post with the id doesn't exist in db anymore
-    //        it('should delete a post by id', function () {
-    //
-    //            let post;
-    //
-    //            return BlogPost
-    //                .findOne()
-    //                .then(_post => {
-    //                post = _post;
-    //                return chai.request(app).delete(`/posts/${post.id}`);
-    //            })
-    //                .then(res => {
-    //                res.should.have.status(204);
-    //                return BlogPost.findById(post.id);
-    //            })
-    //                .then(_post => {
-    //                // when a variable's value is null, chaining `should`
-    //                // doesn't work. so `_post.should.be.null` would raise
-    //                // an error. `should.be.null(_post)` is how we can
-    //                // make assertions about a null value.
-    //                should.not.exist(_post);
-    //            });
-    //        });
-    //    });
+
+
+
+    describe('PUT endpoint', function () {
+
+        // strategy:
+        //  1. Get an existing post from db
+        //  2. Make a PUT request to update that post
+        //  4. Prove post in db is correctly updated
+        it('should update fields you send over', function () {
+            return (
+                chai
+                .request(app)
+                // first have to get
+                .get('/api/mylist/test')
+                .then(function (res) {
+                    const updatedPost = Object.assign(res.body[0], {
+                        videoTitle: 'cats cats cats',
+                        journal: 'dogs dogs dogs'
+                    });
+                    return chai
+                        .request(app)
+                        .put(`/api/mylist/edit-journal/test/${res.body[0].id}`)
+                        .send(updatedPost)
+                        .then(function (res) {
+                            expect(res).to.have.status(200);
+                        });
+                })
+            );
+        });
+    });
+
+
+
+
+
+    describe('DELETE endpoint', function () {
+        it("should delete posts on DELETE", function () {
+            return (
+                chai
+                .request(app)
+                // first have to get
+                .get("/api/mylist/test")
+                .then(function (res) {
+                    return chai
+                        .request(app)
+                        .delete(`/api/mylist/test/${res.body[0].id}`)
+                        .then(function (res) {
+                            expect(res).to.have.status(204);
+                        });
+                })
+            );
+        });
+    });
 });
