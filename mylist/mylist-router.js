@@ -19,6 +19,7 @@ const jwtAuth = passport.authenticate('jwt', {
 });
 
 
+
 //router.get("/", jwtAuth, (req, res) => {
 //
 //    Mylist.find()
