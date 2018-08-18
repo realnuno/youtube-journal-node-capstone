@@ -6,13 +6,12 @@ const {google} = require('googleapis');
 const bodyParser = require('body-parser');
 const morgan = require("morgan");
 const passport = require("passport");
-//const config = require('./config');
-const { router: mylistRouter } = require("./mylist/mylist-router");
-const { router: usersRouter } = require("./users/users-router");
-const { localStrategy, jwtStrategy } = require("./auth/auth-strategies");
-const { router: authRouter } = require("./auth/auth-router");
-const { PORT, DATABASE_URL } = require("./config");
 
+//const { router: mylistRouter } = require("./mylist/mylist-router");
+//const { router: usersRouter } = require("./users/users-router");
+//const { router: authRouter } = require("./auth/auth-router");
+const { PORT, DATABASE_URL } = require("./config");
+const { localStrategy, jwtStrategy } = require("./auth/auth-strategies");
 
 mongoose.Promise = global.Promise;
 const app = express();
@@ -78,10 +77,10 @@ function closeServer() {
 }
 
 
-
-app.use("/api/users/", usersRouter);
-app.use("/api/auth/", authRouter);
-app.use("/api/mylist/", mylistRouter);
+//
+//app.use("/api/users/", usersRouter);
+//app.use("/api/auth/", authRouter);
+//app.use("/api/mylist/", mylistRouter);
 
 
 
