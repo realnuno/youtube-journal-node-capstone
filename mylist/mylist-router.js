@@ -19,7 +19,7 @@ const jwtAuth = passport.authenticate('jwt', {
 });
 
 
-router.get("/", jwtAuth, (req, res) => {
+router.get("/list", jwtAuth, (req, res) => {
 
     Mylist.find()
         .populate("user")
@@ -146,7 +146,7 @@ router.post("/add-video/test/", jsonParser, (req, res) => {
         if (!(field in req.body)) {
             const message = `Missing \`${field}\` in request body`;
             console.error(message);
-            return res.status(400).send(message);
+            return res.status(500).send(message);
         }
     }
 
