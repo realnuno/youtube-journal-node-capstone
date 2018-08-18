@@ -19,25 +19,25 @@ const jwtAuth = passport.authenticate('jwt', {
 });
 
 
-//router.get("/all-lists", jwtAuth, (req, res) => {
-//
-//    Mylist.find()
-//        .populate("user")
-//        .sort({
-//            creationDate: -1
-//        })
-//        .then(mylists => {
-//            res.json(
-//                mylists.map(mylist => mylist.serialize())
-//            );
-//        })
-//        .catch(err => {
-//            console.error(err);
-//            res.status(500).json({
-//                error: "something went wrong"
-//            });
-//        });
-//});
+router.get("/all-lists", jwtAuth, (req, res) => {
+
+    Mylist.find()
+        .populate("user")
+        .sort({
+            creationDate: -1
+        })
+        .then(mylists => {
+            res.json(
+                mylists.map(mylist => mylist.serialize())
+            );
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({
+                error: "something went wrong"
+            });
+        });
+});
 
 router.get("/test", (req, res) => {
 

@@ -7,9 +7,9 @@ const bodyParser = require('body-parser');
 const morgan = require("morgan");
 const passport = require("passport");
 
-//const { router: mylistRouter } = require("./mylist/mylist-router");
-//const { router: usersRouter } = require("./users/users-router");
-//const { router: authRouter } = require("./auth/auth-router");
+const { router: mylistRouter } = require("./mylist/mylist-router");
+const { router: usersRouter } = require("./users/users-router");
+const { router: authRouter } = require("./auth/auth-router");
 const { PORT, DATABASE_URL } = require("./config");
 const { localStrategy, jwtStrategy } = require("./auth/auth-strategies");
 
@@ -77,10 +77,10 @@ function closeServer() {
 }
 
 
-//
-//app.use("/api/users/", usersRouter);
-//app.use("/api/auth/", authRouter);
-//app.use("/api/mylist/", mylistRouter);
+
+app.use("/api/users/", usersRouter);
+app.use("/api/auth/", authRouter);
+app.use("/api/mylist/", mylistRouter);
 
 
 
