@@ -19,7 +19,7 @@ const jwtAuth = passport.authenticate('jwt', {
 });
 
 
-router.get("/list", jwtAuth, (req, res) => {
+router.get("/list", (req, res) => {
 
     Mylist.find()
         .populate("user")
@@ -61,7 +61,7 @@ router.get("/test", (req, res) => {
 
 
 
-router.get("/get-user-list/", jwtAuth, (req, res) => {
+router.get("/get-user-list/", (req, res) => {
 
     Mylist.find({
             user: req.user.id
