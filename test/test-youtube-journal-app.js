@@ -116,6 +116,17 @@ describe('youtube journal API resource', function () {
                         expect(res.body.video_url).to.equal(newPost.video_url);
                     })
             });
+
+            it("should error if POST missing expected values", function () {
+                const badRequestData = {};
+                return chai
+                    .request(app)
+                    .post("/api/mylist/add-video/test")
+                    .send(badRequestData)
+                    .then(function (res) {
+                        expect(res).to.have.status(400);
+                    });
+            });
         });
 
 
