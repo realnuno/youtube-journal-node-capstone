@@ -38,6 +38,43 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 
+function runServer(databaseUrl, port = PORT) {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(
+            databaseUrl,
+            err => {
+                if (err) {
+                    return reject(err);
+                }
+                server = app
+                    .listen(port, () => {
+                    console.log(`Your app is listening on port ${port}`);
+                    resolve();
+                })
+                    .on("error", err => {
+                    mongoose.disconnect();
+                    reject(err);
+                });
+            }
+        );
+    });
+}
+
+function closeServer() {
+    return mongoose.disconnect().then(() => {
+        return new Promise((resolve, reject) => {
+            console.log("Closing server");
+            server.close(err => {
+                if (err) {
+                    return reject(err);
+                }
+                resolve();
+            });
+        });
+    });
+}
+
+
 
 app.use("/api/users/", usersRouter);
 app.use("/api/auth/", authRouter);
@@ -96,41 +133,6 @@ app.use("*", (req, res) => {
 // assumes runServer has run and set `server` to a server object
 let server;
 
-function runServer(databaseUrl, port = PORT) {
-    return new Promise((resolve, reject) => {
-        mongoose.connect(
-            databaseUrl,
-            err => {
-                if (err) {
-                    return reject(err);
-                }
-                server = app
-                    .listen(port, () => {
-                    console.log(`Your app is listening on port ${port}`);
-                    resolve();
-                })
-                    .on("error", err => {
-                    mongoose.disconnect();
-                    reject(err);
-                });
-            }
-        );
-    });
-}
-
-function closeServer() {
-    return mongoose.disconnect().then(() => {
-        return new Promise((resolve, reject) => {
-            console.log("Closing server");
-            server.close(err => {
-                if (err) {
-                    return reject(err);
-                }
-                resolve();
-            });
-        });
-    });
-}
 
 if (require.main === module) {
     runServer(DATABASE_URL).catch(err => console.error(err));
