@@ -185,6 +185,7 @@ $(function () {
 
             $(".save-button").click(function (event) {
                 event.preventDefault();
+
                 $('html').scrollTop(0);
 
                 let mylist = {
