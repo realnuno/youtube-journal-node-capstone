@@ -487,6 +487,7 @@ $(function () {
         if (authToken) {
 
             $(".main-section").show();
+            $(".about-this-app").show();
             $(".youtube-search-result").hide();
             $(".unlogged").hide();
             $(".logged").show();
@@ -499,6 +500,7 @@ $(function () {
             //            console.log('unlogged');
 
             $(".main-section").show();
+            $(".about-this-app").show();
             $(".youtube-search-result").hide();
             $(".logged").hide();
             $(".unlogged").show();
