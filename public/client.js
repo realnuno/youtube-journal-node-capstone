@@ -520,6 +520,9 @@ $(function () {
             $(".add-section").hide();
             $(".mylist-section").hide();
         }
+        $('html, body').animate({
+            scrollTop: $('html, body').offset().top
+        }, 1000);
     }
 
     $("#nav-video-search-button0").click(function (e) {
@@ -557,39 +560,31 @@ $(function () {
 
     $("#nav-icon-search-button0").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
 
         searchVideoPage();
     });
     $("#nav-icon-search-button1").click(function (e) {
         e.preventDefault();
-        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-icon-search-button2").click(function (e) {
         e.preventDefault();
-        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-icon-search-button3").click(function (e) {
         e.preventDefault();
-        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-icon-search-button4").click(function (e) {
         e.preventDefault();
-        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-icon-search-button5").click(function (e) {
         e.preventDefault();
-        $('html').scrollTop(0);
 
         searchVideoPage();
     });
@@ -606,16 +601,18 @@ $(function () {
         $(".login-section").hide();
         $(".add-section").hide();
         $(".mylist-section").hide();
+
+        $('html, body').animate({
+            scrollTop: $('html, body').offset().top
+        }, 1000);
     }
 
 
     $("#nav-signup-button ").click(e => {
-        $('html').scrollTop(0);
         signUpPage(e);
     })
 
     $("#nav-signup-button2 ").click(e => {
-        $('html').scrollTop(0);
         signUpPage(e);
     })
 
@@ -631,15 +628,17 @@ $(function () {
         $(".login-section").show();
         $(".add-section").hide();
         $(".mylist-section").hide();
+
+        $('html, body').animate({
+            scrollTop: $('html, body').offset().top
+        }, 1000);
     }
 
     $("#nav-login-button").click(e => {
-        $('html').scrollTop(0);
         loginPage(e);
     });
 
     $("#nav-login-button2").click(e => {
-        $('html').scrollTop(0);
         loginPage(e);
     });
 
@@ -656,9 +655,9 @@ $(function () {
         $(".add-section").show();
         $(".mylist-section").hide();
 
-        if (addedVideo) {
-            //            console.log(JSON.parse(addedVideo));
-        };
+        $('html, body').animate({
+            scrollTop: $('html, body').offset().top
+        }, 1000);
     }
 
 
@@ -752,7 +751,6 @@ $(function () {
 
         event.preventDefault();
         event.stopPropagation();
-        $('html').scrollTop(0);
 
         var video = $(".ytplayer").attr("src");
         $(".ytplayer").attr("src", "");
