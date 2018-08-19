@@ -1,6 +1,6 @@
 # Youtube Journal Node Capstone
 
-You can store youtube url with comment.
+Youtube Journal is a place where you can personalize YouTube and brainstorm your favorite topics by gathering your favorite videos and your thoughts related them in one space.
 
 ## Screenshots
 
