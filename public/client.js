@@ -185,8 +185,10 @@ $(function () {
 
             $(".add-results").on("click", ".save-button", function (event) {
 
-                event.stopPropagation();
+
                 event.preventDefault();
+                event.stopPropagation();
+
 
                 $('html').scrollTop(0);
 
