@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <script src="https://unpkg.com/ionicons@4.3.0/dist/ionicons.js"></script>
-    <title>YouTube-Journal</title>
+    <title>my YouTube space</title>
 </head>
 
 <body>
@@ -19,26 +19,26 @@
     <section class="main-section">
         <nav>
             <div class="unlogged nav-bar main-nav-bar">
-                <div class="button video-search" id="nav-video-search-button0">Video Search</div>
+                <div class="button video-search" id="nav-video-search-button0">video search</div>
                 <ion-icon class="button" id="nav-icon-search-button0" name="search"></ion-icon>
                 <ul class="main-nav">
                     <li>
-                        <div class="button" id="nav-signup-button">Sign UP</div>
+                        <div class="button" id="nav-signup-button">sign up</div>
                     </li>
                     <li>
-                        <div class="button" id="nav-login-button">Log In</div>
+                        <div class="button" id="nav-login-button">log in</div>
                     </li>
                 </ul>
             </div>
             <div class="logged nav-bar main-nav-bar" hidden>
-                <div class="video-search button" id="nav-video-search-button1">Video Search</div>
+                <div class="video-search button" id="nav-video-search-button1">video search</div>
                 <ion-icon class="button" id="nav-icon-search-button1" name="search"></ion-icon>
                 <ul class="main-nav">
                     <li>
-                        <div class="button" id="nav-mylist-button1">mylist</div>
+                        <div class="button" id="nav-mylist-button1">my list</div>
                     </li>
                     <li>
-                        <div class="button" id="nav-logout-button1">Logout</div>
+                        <div class="button" id="nav-logout-button1">log out</div>
                     </li>
                     <li>
                         <ion-icon class="button" id="nav-logout-icon1" name="log-out"></ion-icon>
@@ -52,15 +52,15 @@
         <div class="main-page">
 
             <form class="row search-form">
-                <h1 class="col-12 main-title">You<span id="tube">Tube</span> - Journal</h1>
+                <h1 class="col-12 main-title">my|You<span id="tube">Tube</span>|space</h1>
                 <input type="text" class="search-input" id="search-input" name="search-input" placeholder="Search video">
-                <button class="button search-button" type="submit">Search</button>
+                <button class="button search-button" type="submit">search</button>
             </form>
         </div>
 
         <div class="row youtube-search-result" hidden>
 
-            <h2 class="section-title">Results</h2>
+            <h2 class="section-title">results</h2>
             <div id="search-results" aria-live="assertive">
                 <ul>
                     <li>
@@ -106,27 +106,33 @@
                 </ul>
             </div>
             <div class="buttonOptions">
-                <button class="tokenClass button pre-button" value="Previous">Prev</button>
-                <button class="tokenClass button" value="Next">Next</button>
+                <button class="tokenClass button pre-button" value="Previous">prev</button>
+                <button class="tokenClass button" value="Next">next</button>
             </div>
         </div>
 
 
         <div class="row about-this-app">
+        <div class="col-12">
+            <p class="description">
+                my|YouTube|space is a place where you can personalize YouTube and brainstorm your favorite topics by gathering your favorite videos and your thoughts related them in one space.
+            </p>
+        </div>
+
             <div class="col-4  about youtube-about">
                 <!--                <i class="fab fa-youtube-square"></i>-->
                 <img src="img/youtube.jpg">
-                <p>You can search Your video.</p>
+                <p>You can search for your favorite videos</p>
             </div>
             <div class="col-4 about save-video-about">
                 <!--                <i class="fas fa-download"></i>-->
                 <img src="img/OE60WK0.jpg">
-                <p>You can save your own video list.</p>
+                <p>... save them into your favorites list</p>
             </div>
             <div class="col-4 about journal-about">
                 <!--                <i class="fas fa-pencil-alt"></i>-->
                 <img src="img/OAYXGY0.jpg">
-                <p>You can write your own journal.</p>
+                <p>... and record ideas and ruminations about the video topics in your own personal journal.</p>
             </div>
         </div>
     </section>
@@ -143,11 +149,11 @@
     <section class="signup-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div class="button video-search" id="nav-video-search-button2">Video Search</div>
+                <div class="button video-search" id="nav-video-search-button2">video search</div>
                 <ion-icon class="button" id="nav-icon-search-button2" name="search"></ion-icon>
                 <ul class="main-nav">
                     <li>
-                        <div class="button" id="nav-login-button2">Login</div>
+                        <div class="button" id="nav-login-button2">log in</div>
                     </li>
                 </ul>
             </div>
@@ -158,13 +164,13 @@
         <div class="signup-page">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="section-title">Sign Up</h1>
+                    <h1 class="section-title">sign up</h1>
                     <form class="signup-form">
                         <input type="text" id="name-input" name="name-input" placeholder="name" required>
                         <input type="email" id="email-input" name="email-input" placeholder="email" required>
                         <input type="password" id="password-input" name="password-input" placeholder="password" required>
 
-                        <button class="button signup-button" type="submit">Sign up</button>
+                        <button class="button signup-button" type="submit">sign up</button>
                     </form>
                 </div>
             </div>
@@ -180,11 +186,11 @@
     <section class="login-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div class="button video-search" id="nav-video-search-button3">Video Search</div>
+                <div class="button video-search" id="nav-video-search-button3">video search</div>
                 <ion-icon class="button" id="nav-icon-search-button3" name="search"></ion-icon>
                 <ul class="main-nav">
                     <li>
-                        <div class="button" id="nav-signup-button2">Sign UP</div>
+                        <div class="button" id="nav-signup-button2">sign up</div>
                     </li>
                 </ul>
             </div>
@@ -195,11 +201,11 @@
         <div class="login-page">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="section-title">Login</h1>
+                    <h1 class="section-title">log in</h1>
                     <form id="login-form">
                         <input type="email" id="login-email-input" name="email-input" placeholder="email" required>
                         <input type="password" id="login-password-input" name="password-input" placeholder="password" required>
-                        <button class="button login-button" type="submit">Login</button>
+                        <button class="button login-button" type="submit">log in</button>
                     </form>
                 </div>
             </div>
@@ -219,14 +225,14 @@
     <section class="add-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div class="button video-search" id="nav-video-search-button4">Video Search</div>
+                <div class="button video-search" id="nav-video-search-button4">video search</div>
                 <ion-icon class="button" id="nav-icon-search-button4" name="search"></ion-icon>
                 <ul class="main-nav">
                     <li>
-                        <div class="button" id="nav-mylist-button2">mylist</div>
+                        <div class="button" id="nav-mylist-button2">my list</div>
                     </li>
                     <li>
-                        <div class="button" id="nav-logout-button2">Logout</div>
+                        <div class="button" id="nav-logout-button2">log out</div>
                     </li>
                     <li>
                         <ion-icon class="button" id="nav-logout-icon2" name="log-out"></ion-icon>
@@ -237,7 +243,7 @@
 
 
         <main class="add-main">
-            <h1 class="section-title">Add Video</h1>
+            <h1 class="section-title">add video</h1>
             <div class="add-results">
 
             </div>
@@ -254,14 +260,14 @@
     <section class="mylist-section" hidden>
         <nav>
             <div class="nav-bar">
-                <div class="button video-search" id="nav-video-search-button5">Video Search</div>
+                <div class="button video-search" id="nav-video-search-button5">video search</div>
                 <ion-icon class="button" id="nav-icon-search-button5" name="search"></ion-icon>
                 <ul class="main-nav">
                     <li>
-                        <div class="button" id="nav-mylist-button3">mylist</div>
+                        <div class="button" id="nav-mylist-button3">my list</div>
                     </li>
                     <li>
-                        <div class="button" id="nav-logout-button3">Logout</div>
+                        <div class="button" id="nav-logout-button3">log out</div>
                     </li>
                     <li>
                         <ion-icon class="button" id="nav-logout-icon3" name="log-out"></ion-icon>
@@ -272,7 +278,7 @@
 
 
         <main class="mylist-main">
-            <h1 class="section-title">My List</h1>
+            <h1 class="section-title">my list</h1>
             <div class="mylist-results">
                 <ul>
 
@@ -312,8 +318,8 @@
                 &copy; 2018 Ian Hwang
             </p>
             <p>
-                Build with
-                <ion-icon name="heart" style=color:#ea0000; padding: 0 3px></ion-icon> in Virginia, June 2018.
+                built with
+                <ion-icon name="heart" style=color:#ea0000; padding: 0 3px></ion-icon> &amp; <ion-icon name="musical-note" style=color:#000000></ion-icon> in NoVa, August 2018.
             </p>
         </div>
     </footer>

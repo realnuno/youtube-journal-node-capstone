@@ -185,10 +185,8 @@ $(function () {
 
             $(".add-results").on("click", ".save-button", function (event) {
 
-
                 event.preventDefault();
                 event.stopPropagation();
-
 
                 $('html').scrollTop(0);
 
@@ -209,8 +207,8 @@ $(function () {
                     },
                     success: function (data) {
                         mylistPage();
-                        //                        console.log(data);
-
+                        localStorage.setItem('storedVideo', "");
+                        pickedVideo = "";
                     },
                     headers: {
                         "Authorization": "Bearer " + localStorage.getItem("token")
@@ -309,7 +307,7 @@ $(function () {
                         event.stopPropagation();
                         $('html').scrollTop(0);
 
-                        console.log("pickedVideo.id");
+                        console.log("312");
 
                         let mylist = {
                             videoTitle: pickedVideo.snippet.title,
@@ -325,6 +323,8 @@ $(function () {
                             },
                             success: function (data) {
                                 mylistPage();
+                                localStorage.setItem('storedVideo', "");
+                                pickedVideo = "";
                                 //                                console.log(data);
 
                             },
@@ -828,7 +828,8 @@ $(function () {
                 success: function (data) {
                     //                    console.log("good");
                     mylistPage();
-
+                    localStorage.setItem('storedVideo', "");
+                    pickedVideo = "";
                 },
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
