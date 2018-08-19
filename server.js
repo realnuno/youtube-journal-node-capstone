@@ -62,7 +62,7 @@ const youtube = google.youtube({
 app.get('/api/search', function (req, res) {
 
 
-//    console.log(req.params);
+    //    console.log(req.params);
     const input = req.query.q;
     const page = req.query.pageToken;
 
@@ -76,7 +76,7 @@ app.get('/api/search', function (req, res) {
             console.error('Error: ' + err);
         }
         if (data) {
-//            console.log(data.data.items)
+            //            console.log(data.data.items)
             res.json(data.data)
         }
     });
