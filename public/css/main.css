@@ -517,8 +517,8 @@ footer ion-icon {
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
     font-size: 20px;
-    width: 35%;
-    min-width: 400px;
+    width: 100%;
+    max-width: 400px;
     margin: 10px auto;
     height: 45px;
     padding-left: 15px;
