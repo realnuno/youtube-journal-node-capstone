@@ -297,10 +297,10 @@ $(function () {
                     //    ----------------------- Add Video ---------------------------
 
 
-                    $(".save-button").click(function (event) {
+                    $(".add-results").on("click", ".save-button", function (event) {
                         event.preventDefault();
+                        event.stopPropagation();
                         $('html').scrollTop(0);
-
 
                         let mylist = {
                             videoTitle: pickedVideo.snippet.title,
