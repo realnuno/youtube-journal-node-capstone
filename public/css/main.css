@@ -199,8 +199,6 @@ ion-icon {
 
 
 
-
-
 /*---------------------- About This App & Footer ---------------------------------------------*/
 
 .about-this-app {
@@ -209,6 +207,14 @@ ion-icon {
     margin-bottom: 120px;
     text-align: center;
 }
+
+
+.description {
+    /*    display: block;*/
+    max-width: 70%;
+    margin: 10px auto;
+}
+
 
 .about {
     margin-top: 30px;
