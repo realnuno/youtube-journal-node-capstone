@@ -2,7 +2,6 @@
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const faker = require('faker');
 const mongoose = require('mongoose');
 
 // this makes the should syntax available throughout
@@ -30,39 +29,6 @@ chai.use(chaiHttp);
 
 
 
-// this function deletes the entire database.
-// we'll call it in an `afterEach` block below
-// to ensure  ata from one test does not stick
-// around for next one
-function tearDownDb() {
-    return new Promise((resolve, reject) => {
-        console.warn('Deleting database');
-        mongoose.connection.dropDatabase()
-            .then(result => resolve(result))
-            .catch(err => reject(err));
-    });
-}
-
-
-// used to put randomish documents in db
-// so we have data to work with and assert about.
-// we use the Faker library to automatically
-// generate placeholder values for author, title, content
-// and then we insert that data into mongo
-function seedYouTubeJournalData() {
-    console.info('seeding youtube journal data');
-    const seedData = [];
-    for (let i = 1; i <= 10; i++) {
-        seedData.push({
-            videoTitle: faker.lorem.sentence(),
-            journal: faker.lorem.text(),
-            video_url: faker.lorem.word()
-        });
-    }
-    // this will return a promise
-    return Mylist.insertMany(seedData);
-}
-
 
 describe('youtube journal API resource', function () {
 
@@ -70,15 +36,6 @@ describe('youtube journal API resource', function () {
         return runServer(TEST_DATABASE_URL);
     });
 
-    beforeEach(function () {
-        return seedYouTubeJournalData();
-    });
-
-    afterEach(function () {
-        // tear down database so we ensure no state from this test
-        // effects any coming after.
-        //        return tearDownDb();
-    });
 
     after(function () {
         return closeServer();
@@ -88,7 +45,6 @@ describe('youtube journal API resource', function () {
     // this allows us to make clearer, more discrete tests that focus
     // on proving something small
     describe('GET endpoint', function () {
-
         it('should return all existing data', function () {
             // strategy:
             //    1. get back all posts returned by by GET request to `/api/mylist`
@@ -130,53 +86,48 @@ describe('youtube journal API resource', function () {
     });
 
 
+        describe('POST endpoint', function () {
+            // strategy: make a POST request with data,
+            // then prove that the post we get back has
+            // right keys, and that `id` is there (which means
+            // the data was inserted into db)
+            it('should add a new blog post', function () {
 
+                const newPost = {
+                    videoTitle: "Lorem ip some",
+                    journal: "foo foo foo foo",
+                    video_url: "Emma Goldman"
+                };
 
+                const expectedKeys = ["id", "creationDate"].concat(Object.keys(newPost));
 
+                return chai
+                    .request(app)
+                    .post('/api/mylist/add-video/test')
+                    .send(newPost)
+                    .then(function (res) {
+                        console.log("real");
+                        expect(res).to.have.status(201);
+                        expect(res).to.be.json;
+                        expect(res.body).to.be.a("object");
+                        expect(res.body).to.have.all.keys(expectedKeys);
+                        expect(res.body.videoTitle).to.equal(newPost.videoTitle);
+                        expect(res.body.journal).to.equal(newPost.journal);
+                        expect(res.body.video_url).to.equal(newPost.video_url);
+                    })
+            });
 
-
-
-    describe('POST endpoint', function () {
-        // strategy: make a POST request with data,
-        // then prove that the post we get back has
-        // right keys, and that `id` is there (which means
-        // the data was inserted into db)
-        it('should add a new blog post', function () {
-
-            const newPost = {
-                videoTitle: "Lorem ip some",
-                journal: "foo foo foo foo",
-                video_url: "Emma Goldman"
-            };
-
-            const expectedKeys = ["id", "creationDate"].concat(Object.keys(newPost));
-
-            return chai
-                .request(app)
-                .post('/api/mylist/add-video')
-                .send(newPost)
-                .then(function (res) {
-                    //                    expect(res).to.have.status(201);
-                    //                    expect(res).to.be.json;
-                    //                    expect(res.body).to.be.a("object");
-                    //                    expect(res.body).to.have.all.keys(expectedKeys);
-                    //                    expect(res.body.videoTitle).to.equal(newPost.videoTitle);
-                    //                    expect(res.body.journal).to.equal(newPost.journal);
-                    //                    expect(res.body.video_url).to.equal(newPost.video_url);
-                })
+            it("should error if POST missing expected values", function () {
+                const badRequestData = {};
+                return chai
+                    .request(app)
+                    .post("/api/mylist/add-video/test")
+                    .send(badRequestData)
+                    .then(function (res) {
+                        expect(res).to.have.status(400);
+                    });
+            });
         });
-
-        //            it("should error if POST missing expected values", function () {
-        //                const badRequestData = {};
-        //                return chai
-        //                    .request(app)
-        //                    .post("/api/mylist/add-video/test")
-        //                    .send(badRequestData)
-        //                    .then(function (res) {
-        //                        expect(res).to.have.status(400);
-        //                    });
-        //            });
-    });
 
 
 
@@ -230,5 +181,6 @@ describe('youtube journal API resource', function () {
                 })
             );
         });
+
     });
 });

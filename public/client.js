@@ -451,6 +451,19 @@ $(function () {
     });
 
 
+    $("#nav-logout-icon1").click(function (event) {
+        //        event.preventDefault();
+        logOut();
+    });
+    $("#nav-logout-icon2").click(function (event) {
+        //        event.preventDefault();
+        logOut();
+    });
+    $("#nav-logout-icon3").click(function (event) {
+        //        event.preventDefault();
+        logOut();
+    });
+
 
 
 
@@ -529,6 +542,47 @@ $(function () {
         searchVideoPage();
     });
     $("#nav-video-search-button5").click(function (e) {
+        e.preventDefault();
+        $('html').scrollTop(0);
+
+        searchVideoPage();
+    });
+
+
+
+    $("#nav-icon-search-button0").click(function (e) {
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 'fast');
+
+        searchVideoPage();
+    });
+    $("#nav-icon-search-button1").click(function (e) {
+        e.preventDefault();
+        $('html').scrollTop(0);
+
+        searchVideoPage();
+    });
+    $("#nav-icon-search-button2").click(function (e) {
+        e.preventDefault();
+        $('html').scrollTop(0);
+
+        searchVideoPage();
+    });
+    $("#nav-icon-search-button3").click(function (e) {
+        e.preventDefault();
+        $('html').scrollTop(0);
+
+        searchVideoPage();
+    });
+    $("#nav-icon-search-button4").click(function (e) {
+        e.preventDefault();
+        $('html').scrollTop(0);
+
+        searchVideoPage();
+    });
+    $("#nav-icon-search-button5").click(function (e) {
         e.preventDefault();
         $('html').scrollTop(0);
 
@@ -651,6 +705,7 @@ $(function () {
                         <button class="button delete-button" video-index="${index}">delete</button>
                     </div>
                 </div>
+                <hr class="divideLine">
             </li>
                     `;
 

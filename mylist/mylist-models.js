@@ -42,7 +42,7 @@ const mylistSchema = mongoose.Schema({
 });
 
 
-mylistSchema.methods.serialize = function() {
+mylistSchema.methods.serialize = function () {
     return {
         videoTitle: this.videoTitle || "",
         journal: this.journal || "",
@@ -54,4 +54,6 @@ mylistSchema.methods.serialize = function() {
 
 const Mylist = mongoose.model("Mylist", mylistSchema);
 
-module.exports = { Mylist };
+module.exports = {
+    Mylist
+};
