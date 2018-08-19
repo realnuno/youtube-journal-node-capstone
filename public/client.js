@@ -398,7 +398,7 @@ $(function () {
                     },
                     success: function (data) {
 
-                        //                        console.log("logged in!");
+                        localStorage.setItem('storedVideo', "");
 
                         loginUserName = loginUser.email;
                         localStorage.setItem("token", data.authToken);
