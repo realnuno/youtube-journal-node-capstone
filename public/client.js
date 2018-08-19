@@ -129,8 +129,7 @@ $(function () {
 
     $("#search-results ul").on("click", ".addVideoButton", function (event) {
 
-
-
+        $('html').scrollTop(0);
         event.preventDefault();
         event.stopPropagation();
 
@@ -150,10 +149,6 @@ $(function () {
         if (authToken) {
 
             addPage();
-
-            $('html, body').animate({
-                scrollTop: $('.add-main').offset().top
-            }, 300);
 
 //            console.log(pickedVideo);
 
@@ -182,6 +177,7 @@ $(function () {
             </div>
             `
 
+
             $(".add-results").html(embeddedVideo);
 
             //    ----------------------- Add Video ---------------------------
@@ -189,6 +185,7 @@ $(function () {
 
             $(".save-button").click(function (event) {
                 event.preventDefault();
+                $('html').scrollTop(0);
 
                 let mylist = {
                     videoTitle: pickedVideo.snippet.title,
@@ -204,10 +201,6 @@ $(function () {
                     },
                     success: function (data) {
                         mylistPage();
-
-                        $('html, body').animate({
-                            scrollTop: $('.mylist-main').offset().top
-                        }, 300);
                         //                        console.log(data);
 
                     },
@@ -233,6 +226,7 @@ $(function () {
 
     $("#login-form").submit(function (event) {
         event.preventDefault();
+        $('html').scrollTop(0);
 
         let logUser = {
             email: $("#login-email-input").val(),
@@ -264,10 +258,6 @@ $(function () {
                 if (addedVideo) {
 
                     addPage();
-
-                    $('html, body').animate({
-                        scrollTop: $('.add-main').offset().top
-                    }, 300);
 
                     const embeddedVideo = `
                         <div class="row embeddedVideo">
@@ -308,6 +298,7 @@ $(function () {
 
                     $(".save-button").click(function (event) {
                         event.preventDefault();
+                        $('html').scrollTop(0);
 
 
                         let mylist = {
@@ -324,10 +315,6 @@ $(function () {
                             },
                             success: function (data) {
                                 mylistPage();
-
-                                $('html, body').animate({
-                                    scrollTop: $('.mylist-main').offset().top
-                                }, 300);
                                 //                                console.log(data);
 
                             },
@@ -343,10 +330,6 @@ $(function () {
                 if (!addedVideo) {
 
                     mylistPage();
-
-                    $('html, body').animate({
-                        scrollTop: $('.mylist-main').offset().top
-                    }, 300);
                 }
                 //
             },
@@ -367,6 +350,7 @@ $(function () {
 
     $(".signup-form").submit(function (event) {
         event.preventDefault();
+        $('html').scrollTop(0);
 
         let user = {
             name: $("#name-input").val(),
@@ -398,14 +382,11 @@ $(function () {
                     },
                     success: function (data) {
 
-                        localStorage.setItem('storedVideo', "");
+                        //                        console.log("logged in!");
 
                         loginUserName = loginUser.email;
                         localStorage.setItem("token", data.authToken);
                         searchVideoPage();
-                        $('html, body').animate({
-                            scrollTop: 0
-                        }, 'fast');
                     },
                     // headers: {
                     //   'Authorization': 'Bearer ' + authToken
@@ -459,46 +440,28 @@ $(function () {
     $("#nav-logout-button1").click(function (event) {
         //        event.preventDefault();
         logOut();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
     });
     $("#nav-logout-button2").click(function (event) {
         //        event.preventDefault();
         logOut();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
     });
     $("#nav-logout-button3").click(function (event) {
         //        event.preventDefault();
         logOut();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
     });
 
 
     $("#nav-logout-icon1").click(function (event) {
         //        event.preventDefault();
         logOut();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
     });
     $("#nav-logout-icon2").click(function (event) {
         //        event.preventDefault();
         logOut();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
     });
     $("#nav-logout-icon3").click(function (event) {
         //        event.preventDefault();
         logOut();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
     });
 
 
@@ -556,41 +519,31 @@ $(function () {
     });
     $("#nav-video-search-button1").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button2").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button3").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button4").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button5").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
@@ -607,41 +560,31 @@ $(function () {
     });
     $("#nav-icon-search-button1").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-icon-search-button2").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-icon-search-button3").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-icon-search-button4").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-icon-search-button5").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         searchVideoPage();
     });
@@ -662,16 +605,12 @@ $(function () {
 
 
     $("#nav-signup-button ").click(e => {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
         signUpPage(e);
     })
 
     $("#nav-signup-button2 ").click(e => {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
         signUpPage(e);
     })
 
@@ -690,16 +629,12 @@ $(function () {
     }
 
     $("#nav-login-button").click(e => {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
         loginPage(e);
     });
 
     $("#nav-login-button2").click(e => {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
         loginPage(e);
     });
 
@@ -793,9 +728,6 @@ $(function () {
 
                 $(".mylist-results ul").html(displayResults);
 
-                $('html, body').animate({
-                    scrollTop: 0
-                }, 'fast');
 
             },
             headers: {
@@ -815,9 +747,7 @@ $(function () {
 
         event.preventDefault();
         event.stopPropagation();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         var video = $(".ytplayer").attr("src");
         $(".ytplayer").attr("src", "");
@@ -829,10 +759,6 @@ $(function () {
 
 
         addPage();
-
-        $('html, body').animate({
-            scrollTop: $('.add-main').offset().top
-        }, 300);
 
 
         const editVideo = `
@@ -871,9 +797,7 @@ $(function () {
         $(".edit-save-button").click(function (event) {
             event.preventDefault();
             event.stopPropagation();
-            $('html, body').animate({
-                scrollTop: 0
-            }, 'fast');
+            $('html').scrollTop(0);
 
 
             let editedMylist = {
@@ -946,25 +870,19 @@ $(function () {
 
     $("#nav-mylist-button1").click(e => {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         mylistPage(e);
     });
     $("#nav-mylist-button2").click(e => {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         mylistPage(e);
     });
     $("#nav-mylist-button3").click(e => {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
+        $('html').scrollTop(0);
 
         mylistPage(e);
     });
