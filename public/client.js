@@ -151,6 +151,10 @@ $(function () {
 
             addPage();
 
+            $('html, body').animate({
+                scrollTop: $('.add-main').offset().top
+            }, 100);
+
 //            console.log(pickedVideo);
 
             const embeddedVideo = `
