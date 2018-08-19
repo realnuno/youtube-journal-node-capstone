@@ -403,6 +403,9 @@ $(function () {
                         loginUserName = loginUser.email;
                         localStorage.setItem("token", data.authToken);
                         searchVideoPage();
+                        $('html, body').animate({
+                            scrollTop: 0
+                        }, 'fast');
                     },
                     // headers: {
                     //   'Authorization': 'Bearer ' + authToken
@@ -456,28 +459,46 @@ $(function () {
     $("#nav-logout-button1").click(function (event) {
         //        event.preventDefault();
         logOut();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 'fast');
     });
     $("#nav-logout-button2").click(function (event) {
         //        event.preventDefault();
         logOut();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 'fast');
     });
     $("#nav-logout-button3").click(function (event) {
         //        event.preventDefault();
         logOut();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 'fast');
     });
 
 
     $("#nav-logout-icon1").click(function (event) {
         //        event.preventDefault();
         logOut();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 'fast');
     });
     $("#nav-logout-icon2").click(function (event) {
         //        event.preventDefault();
         logOut();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 'fast');
     });
     $("#nav-logout-icon3").click(function (event) {
         //        event.preventDefault();
         logOut();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 'fast');
     });
 
 
