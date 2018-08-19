@@ -129,7 +129,8 @@ $(function () {
 
     $("#search-results ul").on("click", ".addVideoButton", function (event) {
 
-        $('html').scrollTop(0);
+
+
         event.preventDefault();
         event.stopPropagation();
 
@@ -150,7 +151,7 @@ $(function () {
 
             addPage();
 
-            console.log(pickedVideo);
+//            console.log(pickedVideo);
 
             const embeddedVideo = `
             <div class="row embeddedVideo">
@@ -177,6 +178,9 @@ $(function () {
             </div>
             `
 
+            $('html, body').animate({
+                scrollTop: $('.add-main').offset().top
+            }, 2000);
 
             $(".add-results").html(embeddedVideo);
 
