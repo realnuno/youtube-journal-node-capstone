@@ -145,12 +145,10 @@ $(function () {
         if (!authToken) {
             $(".main-section").hide();
             $(".login-section").show();
-            $('html').scrollTop(0);
         };
         if (authToken) {
 
             addPage();
-            $('html').scrollTop(0);
 //            console.log(pickedVideo);
 
             const embeddedVideo = `
@@ -181,6 +179,10 @@ $(function () {
 
             $(".add-results").html(embeddedVideo);
 
+            $('html, body').animate({
+                scrollTop: $('html, body').offset().top
+            }, 1000);
+
             //    ----------------------- Add Video ---------------------------
 
 
@@ -202,7 +204,9 @@ $(function () {
                     },
                     success: function (data) {
                         mylistPage();
-                        $('html').scrollTop(0);
+                        $('html, body').animate({
+                            scrollTop: $('html, body').offset().top
+                        }, 1000);
                         //                        console.log(data);
 
                     },
@@ -316,7 +320,9 @@ $(function () {
                             },
                             success: function (data) {
                                 mylistPage();
-                                $('html').scrollTop(0);
+                                $('html, body').animate({
+                                    scrollTop: $('html, body').offset().top
+                                }, 1000);
                                 //                                console.log(data);
 
                             },
@@ -332,7 +338,9 @@ $(function () {
                 if (!addedVideo) {
 
                     mylistPage();
-                    $('html').scrollTop(0);
+                    $('html, body').animate({
+                        scrollTop: $('html, body').offset().top
+                    }, 1000);
                 }
                 //
             },
