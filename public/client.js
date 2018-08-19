@@ -129,7 +129,7 @@ $(function () {
 
     $("#search-results ul").on("click", ".addVideoButton", function (event) {
 
-        $('html').scrollTop(0);
+
         event.preventDefault();
         event.stopPropagation();
 
@@ -145,11 +145,12 @@ $(function () {
         if (!authToken) {
             $(".main-section").hide();
             $(".login-section").show();
+            $('html').scrollTop(0);
         };
         if (authToken) {
 
             addPage();
-
+            $('html').scrollTop(0);
 //            console.log(pickedVideo);
 
             const embeddedVideo = `
@@ -186,7 +187,6 @@ $(function () {
             $(".save-button").click(function (event) {
                 event.preventDefault();
 
-                $('html').scrollTop(0);
 
                 let mylist = {
                     videoTitle: pickedVideo.snippet.title,
@@ -202,6 +202,7 @@ $(function () {
                     },
                     success: function (data) {
                         mylistPage();
+                        $('html').scrollTop(0);
                         //                        console.log(data);
 
                     },
@@ -227,7 +228,6 @@ $(function () {
 
     $("#login-form").submit(function (event) {
         event.preventDefault();
-        $('html').scrollTop(0);
 
         let logUser = {
             email: $("#login-email-input").val(),
@@ -292,6 +292,7 @@ $(function () {
                     var video = $("#ytplayer").attr("src");
                     $("#ytplayer").attr("src", "");
                     $("#ytplayer").attr("src", video);
+                    $('html').scrollTop(0);
 
 
                     //    ----------------------- Add Video ---------------------------
@@ -299,7 +300,6 @@ $(function () {
 
                     $(".save-button").click(function (event) {
                         event.preventDefault();
-                        $('html').scrollTop(0);
 
 
                         let mylist = {
@@ -316,6 +316,7 @@ $(function () {
                             },
                             success: function (data) {
                                 mylistPage();
+                                $('html').scrollTop(0);
                                 //                                console.log(data);
 
                             },
@@ -331,6 +332,7 @@ $(function () {
                 if (!addedVideo) {
 
                     mylistPage();
+                    $('html').scrollTop(0);
                 }
                 //
             },
@@ -351,7 +353,6 @@ $(function () {
 
     $(".signup-form").submit(function (event) {
         event.preventDefault();
-        $('html').scrollTop(0);
 
         let user = {
             name: $("#name-input").val(),
@@ -388,6 +389,7 @@ $(function () {
                         loginUserName = loginUser.email;
                         localStorage.setItem("token", data.authToken);
                         searchVideoPage();
+                        $('html').scrollTop(0);
                     },
                     // headers: {
                     //   'Authorization': 'Bearer ' + authToken
@@ -433,7 +435,7 @@ $(function () {
         $(".login-section").hide();
         $(".add-section").hide();
         $(".mylist-section").hide();
-
+        $('html').scrollTop(0);
 
     };
 
@@ -514,39 +516,31 @@ $(function () {
 
     $("#nav-video-search-button0").click(function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'fast');
 
         searchVideoPage();
     });
     $("#nav-video-search-button1").click(function (e) {
         e.preventDefault();
-        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button2").click(function (e) {
         e.preventDefault();
-        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button3").click(function (e) {
         e.preventDefault();
-        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button4").click(function (e) {
         e.preventDefault();
-        $('html').scrollTop(0);
 
         searchVideoPage();
     });
     $("#nav-video-search-button5").click(function (e) {
         e.preventDefault();
-        $('html').scrollTop(0);
 
         searchVideoPage();
     });
