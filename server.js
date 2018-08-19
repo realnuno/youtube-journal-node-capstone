@@ -67,6 +67,7 @@ app.get('/api/search', function (req, res) {
     const page = req.query.pageToken;
 
     youtube.search.list({
+        type: 'video',
         maxResults: 5,
         part: 'snippet',
         pageToken : page,

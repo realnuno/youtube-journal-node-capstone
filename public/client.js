@@ -150,7 +150,7 @@ $(function () {
 
             addPage();
 
-//            console.log(pickedVideo);
+            console.log(pickedVideo);
 
             const embeddedVideo = `
             <div class="row embeddedVideo">
@@ -184,9 +184,14 @@ $(function () {
 
 
             $(".add-results").on("click", ".save-button", function (event) {
-                event.preventDefault();
+
                 event.stopPropagation();
+                event.preventDefault();
+
                 $('html').scrollTop(0);
+
+                console.log("191");
+                console.log(pickedVideo.id);
 
                 let mylist = {
                     videoTitle: pickedVideo.snippet.title,
@@ -301,6 +306,8 @@ $(function () {
                         event.preventDefault();
                         event.stopPropagation();
                         $('html').scrollTop(0);
+
+                        console.log("pickedVideo.id");
 
                         let mylist = {
                             videoTitle: pickedVideo.snippet.title,
