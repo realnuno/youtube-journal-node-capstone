@@ -17,7 +17,8 @@ Log in Page View | Sign Up Page View
 
 
 ### Wireframes
-![Main Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/main-page.jpg)
+:-------------------------:|:-------------------------:
+![Main Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/main-page.jpg) |
 ![Mylist Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/mylist-page.jpg)
 
 ## Working Prototype
