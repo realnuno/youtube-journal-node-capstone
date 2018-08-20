@@ -18,8 +18,8 @@ Log in Page View | Sign Up Page View
 ## User Cases
 This app is for this type of YouTube users:
 1. VIDEO SEARCH - For YouTube users, so that they can search and find videos that have been looking for.
-2. OWN PLAY LIST - UserS can save favorite videos into your favorites list so they can watch them any time without commercials.
-3. WITH JOURNAL - UserS can record ideas and ruminations about the video topics in your own personal journal.
+2. OWN PLAY LIST - Users can save favorite videos into your favorites list so they can watch them any time without commercials.
+3. WITH JOURNAL - Users can record ideas and ruminations about the video topics in your own personal journal.
 
 
 ### Wireframes
