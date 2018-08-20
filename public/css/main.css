@@ -136,7 +136,7 @@ ion-icon {
     width: 100%;
     position: relative;
     color: #000000;
-    background: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.24)), url(apple-blur-business-533463.jpg) no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.24)), url(../img/apple-blur-business-533463.jpg) no-repeat center center fixed;
     /*    background-color: #f8f8f8;*/
     background-size: cover;
     background-attachment: initial;
@@ -212,8 +212,10 @@ ion-icon {
 
 .description {
     /*    display: block;*/
-    max-width: 70%;
-    margin: 10px auto;
+    max-width: 650px;
+    margin: 0 auto 50px auto;
+    font-size: 23px;
+    line-height: 1.5;
 }
 
 
