@@ -4,15 +4,15 @@ Youtube Journal is a place where you can personalize YouTube and brainstorm your
 
 ## Screenshots
 
-Home Page View | Login Page View #2
+Home Page View | Description  page View
 :-------------------------:|:-------------------------:
-![Home Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/Screen%20Shot%202018-08-20%20at%2012.00.48%20AM.png)  |  ![description  page](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/login.jpg)
-User Dashboard | Seen Entry
-![User Dashboard](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/user-dashboard.jpg) | ![Seen Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/seen-entry.jpg)
-Add Entry  | Edit Entry
-![Add Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/add-entry.jpg) | ![Edit Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/edit-entry.jpg)
-Delete Entry |
-![Delete Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/delete-entry.jpg) |
+![Home Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/landing-page.png)  |  ![description  page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/description-page.png)
+Search-results Page View| Pop-up video Page View
+![Search-results Page View](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/search-results-page.png) | ![Pop-up video Page View](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/popup-video-page.png)
+Edit & Add Page View  | My-list Page View
+![Edit & Add Page View](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/edit-page.png) | ![My-list Page View](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/mylist-page.png)
+Log in Page View | Sign Up Page View
+![Log in Page View](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/login-page.png) |![Sign Up Page View](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/signup-page.png)
 
 
 
