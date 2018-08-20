@@ -15,6 +15,12 @@ Log in Page View | Sign Up Page View
 ![Log in Page View](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/login-page.png) |![Sign Up Page View](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/signup-page.png)
 
 
+## User Cases
+This app is for this type of YouTube users:
+1. VIDEO SEARCH - For YouTube users, so that they can search and find videos that have been looking for.
+2. OWN PLAY LIST - UserS can save favorite videos into your favorites list so they can watch them any time without commercials.
+3. WITH JOURNAL - UserS can record ideas and ruminations about the video topics in your own personal journal.
+
 
 ### Wireframes
 Main Page             |  Mylist Page
@@ -39,3 +45,7 @@ The app's functionality includes:
 ## Responsive
 App is strongly built to be usuable on mobile devices, as well as responsive across mobile, tablet, laptop, and desktop screen resolutions.
 
+## Development Roadmap
+This is v1.0 of the app, but future enhancements are expected to include:
+* Fancy alert for invalid inputs for example, invalid ID or password, search term.
+* Divided sections of MyList for different genre of videos.

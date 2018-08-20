@@ -544,7 +544,13 @@ footer ion-icon {
     margin-top: 20px;
 }
 
+#login-form p {
+    color: #959595;
+}
 
+.demo-account {
+    margin: 20px 0 5px 0;
+}
 
 
 
