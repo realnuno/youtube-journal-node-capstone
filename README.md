@@ -6,7 +6,7 @@ Youtube Journal is a place where you can personalize YouTube and brainstorm your
 
 Home Page View | Login Page View #2
 :-------------------------:|:-------------------------:
-![Home Page](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/home-page.jpg)  |  ![Login Page](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/login.jpg)
+![Home Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/Screen%20Shot%202018-08-20%20at%2012.00.48%20AM.png)  |  ![description  page](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/login.jpg)
 User Dashboard | Seen Entry
 ![User Dashboard](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/user-dashboard.jpg) | ![Seen Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/seen-entry.jpg)
 Add Entry  | Edit Entry
