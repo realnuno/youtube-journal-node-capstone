@@ -18,8 +18,8 @@ Log in Page View | Sign Up Page View
 
 ### Wireframes
 :-------------------------:|:-------------------------:
-![Main Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/main-page.jpg) |
-![Mylist Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/mylist-page.jpg)
+![Main Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/main.jpg) |
+![Mylist Page](https://github.com/realnuno/youtube-journal-node-capstone/blob/master/readme-imgs/mylist.jpg)
 
 ## Working Prototype
 You can access a working prototype of the app here: https://youtube-journal.herokuapp.com/
