@@ -677,7 +677,9 @@ $(function () {
         $(".add-section").hide();
         $(".mylist-section").show();
 
-
+        $('html, body').animate({
+            scrollTop: $('html, body').offset().top
+        }, 1000);
 
 
 
