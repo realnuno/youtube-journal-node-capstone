@@ -295,8 +295,7 @@ $(function () {
 
                     var video = $("#ytplayer").attr("src");
                     $("#ytplayer").attr("src", "");
-                    $("#ytplayer").attr("src", video);
-                    $('html').scrollTop(0);
+                    $("#ytplayer").attr("src", video);$('html').scrollTop(0);
 
 
                     //    ----------------------- Add Video ---------------------------
