@@ -134,6 +134,7 @@ describe('youtube journal API resource', function () {
                 .get('/api/mylist/test')
                 .then(function (res) {
                     const updatedPost = Object.assign(res.body[0], {
+                        video_url: 'asdasd',
                         videoTitle: 'cats cats cats',
                         journal: 'dogs dogs dogs'
                     });
